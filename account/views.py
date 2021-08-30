@@ -737,7 +737,7 @@ def show_profile(request, id, username):
         total_notifications = None
 
     try:
-        get_user_profile = request.user
+        get_user_profile = User.objects.get(pk=id, username=username)
         auth0user = get_user_profile.social_auth.get(provider='auth0')
     except:
         auth0user = None
