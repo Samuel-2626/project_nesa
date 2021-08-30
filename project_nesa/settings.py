@@ -18,8 +18,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=1))
 
-ALLOWED_HOSTS = ['nesaacademy.com',
-                 'infinite-badlands-86173.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['www.nesaacademy.com', '127.0.0.1']
 
 
 # Application definition
