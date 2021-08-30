@@ -16,7 +16,7 @@
 
 <div class="container">
 
-  <h2>{{ blog.title }}</h2>
+  <h2>{{ blog.title|capfirst }}</h2>
   <small>{{ blog.created|date }} by {{ blog.author.get_full_name }}</small>
   <br>
   <br>

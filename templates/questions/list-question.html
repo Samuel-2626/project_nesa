@@ -92,7 +92,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="question">
           
-        <h6><b><a href="{{ question.get_absolute_url }}">{{ question.title|truncatewords_html:7 }}</a></b></h6>
+        <h6><b><a href="{{ question.get_absolute_url }}">{{ question.title|truncatewords_html:7|capfirst }}</a></b></h6>
         <span style="float: right">
           {% if request.user.username == question.author.username %}
           <a href="{% url 'questions:delete_question' question.slug %}" style="color: crimson;"><i class="material-icons">delete</i></a>

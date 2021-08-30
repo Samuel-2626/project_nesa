@@ -18,7 +18,7 @@
 
 
     {% for blog in blogs %}
-      <h3><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
+      <h3><a href="{{ blog.get_absolute_url }}">{{ blog.title|capfirst }}</a></h3>
       <small>{{ blog.created|date }} by {{ blog.author.get_full_name }}</small>
       <p>{{ blog.body|truncatewords_html:50|safe }}</p>
       <hr>

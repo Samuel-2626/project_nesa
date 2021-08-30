@@ -303,7 +303,7 @@
   
     <div class="row">
       <div class="col-12 col-lg-8 mb-5">
-        <h2>{{ question.title }}   {% if request.user.username == question.author.username %}
+        <h2>{{ question.title|capfirst }}   {% if request.user.username == question.author.username %}
           <a href="{% url 'questions:delete_question' question.slug %}" style="color: crimson;"><i class="material-icons">delete</i></a>
             <a href="{% url 'questions:edit_question' question.slug %}"><i class="material-icons">edit</i></a>
           {% endif %}</h2>
