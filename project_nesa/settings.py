@@ -64,6 +64,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+NEWSLETTER_THUMBNAIL = 'sorl-thumbnail'
+
 SITE_ID = 1
 
 MIDDLEWARE = [

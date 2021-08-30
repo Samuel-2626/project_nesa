@@ -110,7 +110,7 @@
           <small>{{ question.body|truncatewords_html:5|safe }}</small>
         </div>
         
-        <strong>asked by:</strong><small class="author"> {% if question.author %}<a href="{% url 'profile' question.author.id question.author.username %}">{{ question.author.get_full_name }}</a> {% else %} <a href='https://nesaacademy.com/help/#anonymous-user'>Anonymous User</a>{% endif %} </small> <b>|</b> 
+        <strong>asked by:</strong><small class="author"> {% if question.author %}<a href="{% url 'profile' question.author.id question.author.username %}">{{ question.author.get_full_name }}</a> {% else %} <a href='https://nesaacademy.herokuapp.com/help/#anonymous-user'>Anonymous User</a>{% endif %} </small> <b>|</b> 
         <small style="font-size: x-small;">{{ question.created|timesince }} ago</small>
         
         <p class="tags-wrapper"> 
@@ -167,7 +167,7 @@ window.onload = (event) => {
       let questionId = element.dataset.question
       
         if (userId) {
-        axios.get(`https://nesaacademy.com/follow/my_question_follow/${userId}/${questionId}/`)
+        axios.get(`https://nesaacademy.herokuapp.com/follow/my_question_follow/${userId}/${questionId}/`)
       .then(response => {
   
         if (response.data.length === 0) {
@@ -176,7 +176,7 @@ window.onload = (event) => {
           element.addEventListener('click', (e) => {
             e.preventDefault()
 
-          axios.post(`https://nesaacademy.com/new_question_follow/`, {
+          axios.post(`https://nesaacademy.herokuapp.com/new_question_follow/`, {
                   user: userId,
                   question: questionId,
                   }, {
@@ -200,7 +200,7 @@ window.onload = (event) => {
           element.addEventListener('click', (e) => {
             e.preventDefault()
 
-            axios.post(`https://nesaacademy.com/follow/delete_question_follow/${userId}/${questionId}/`, {
+            axios.post(`https://nesaacademy.herokuapp.com/follow/delete_question_follow/${userId}/${questionId}/`, {
           
                   }, {
                     headers: {

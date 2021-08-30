@@ -932,7 +932,7 @@ def approve_question(request, id):
         question.save()
 
         new_notificatiion = Notification.objects.create(
-            user=question.author, message=f'Hi, {question.author.first_name}, your question as been approved. Great work!! <a href="{ question.get_absolute_url() }">Check it out</a> or <a href="https://nesaacademy.com/help/#approve-question">Learn more</a>')
+            user=question.author, message=f'Hi, {question.author.first_name}, your question as been approved. Great work!! <a href="{ question.get_absolute_url() }">Check it out</a> or <a href="https://nesaacademy.herokuapp.com/help/#approve-question">Learn more</a>')
 
         new_notificatiion.save()
 
@@ -1001,7 +1001,7 @@ def message(request, id):
             # send notification
 
             new_notificatiion = Notification.objects.create(
-                user=question.author, message=f'Hi from Nesa Academy admin, please attend to the following issues below for your question titled "{question.title}". <br> {cd["message"]}<br> <a href="https://nesaacademy.com/help/#message-user">Learn more</a>')
+                user=question.author, message=f'Hi from Nesa Academy admin, please attend to the following issues below for your question titled "{question.title}". <br> {cd["message"]}<br> <a href="https://nesaacademy.herokuapp.com/help/#message-user">Learn more</a>')
 
             new_notificatiion.save()
 
@@ -1054,7 +1054,7 @@ def delete(request, id):
         question.delete()
 
         new_notificatiion = Notification.objects.create(
-            user=question.author, message=f'Hi {question.author.first_name}, your question "{question.title}" as been deleted permanently. We would love for you to comply to our guidelines next time. <a href="https://nesaacademy.com/help/#delete-question">Learn more</a>')
+            user=question.author, message=f'Hi {question.author.first_name}, your question "{question.title}" as been deleted permanently. We would love for you to comply to our guidelines next time. <a href="https://nesaacademy.herokuapp.com/help/#delete-question">Learn more</a>')
 
         new_notificatiion.save()
 
@@ -1162,7 +1162,7 @@ def approve_answer(request, id):
             pass
 
         new_notificatiion = Notification.objects.create(
-            user=answer.author, message=f'Hi, {answer.author.first_name}, your answer as been approved. Great work!! <a href="{ answer.question.get_absolute_url() }">Check it out</a> or <a href="https://nesaacademy.com/help/#approve-question">Learn more</a>')
+            user=answer.author, message=f'Hi, {answer.author.first_name}, your answer as been approved. Great work!! <a href="{ answer.question.get_absolute_url() }">Check it out</a> or <a href="https://nesaacademy.herokuapp.com/help/#approve-question">Learn more</a>')
 
         new_notificatiion.save()
 
@@ -1248,7 +1248,7 @@ def message_for_answer(request, id):
             # send notification
 
             new_notificatiion = Notification.objects.create(
-                user=answer.author, message=f'Hi from Nesa Academy admin, please attend to the following issues below. Note that this issue emanated from your answer submitted for question titled "{answer.question.title}". <br> {cd["message"]} <hr><br> <a href="https://nesaacademy.com/help/#message-user">Learn more</a>')
+                user=answer.author, message=f'Hi from Nesa Academy admin, please attend to the following issues below. Note that this issue emanated from your answer submitted for question titled "{answer.question.title}". <br> {cd["message"]} <hr><br> <a href="https://nesaacademy.herokuapp.com/help/#message-user">Learn more</a>')
 
             new_notificatiion.save()
 
@@ -1301,7 +1301,7 @@ def delete_answer(request, id):
         answer.delete()
 
         new_notificatiion = Notification.objects.create(
-            user=answer.author, message=f'Hi {answer.author.first_name}, your answer for question "{answer.question.title}" as been deleted permanently. We would love for you to comply to our guidelines next time. <a href="https://nesaacademy.com/help/#delete-question">Learn more</a>')
+            user=answer.author, message=f'Hi {answer.author.first_name}, your answer for question "{answer.question.title}" as been deleted permanently. We would love for you to comply to our guidelines next time. <a href="https://nesaacademy.herokuapp.com/help/#delete-question">Learn more</a>')
 
         new_notificatiion.save()
 

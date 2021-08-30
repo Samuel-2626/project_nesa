@@ -61,7 +61,7 @@
               {% endfor %}
               </p>
 
-              <p><b>By:</b>{% if post.author %}<a href="{% url 'profile' post.author.id post.author.username %}"> {{ post.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</p>
+              <p><b>By:</b>{% if post.author %}<a href="{% url 'profile' post.author.id post.author.username %}"> {{ post.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.herokuapp.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</p>
         
               <i class="material-icons green-color" style="position: relative; top: 5px; right: 5px;">visibility</i> {% with post.views as total_views %}
               {{ total_views }} view{{ total_views|pluralize }}
