@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+
+{% load humanize %}
+{% load i18n %}
+{% block title %}
+{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %} |  
+{% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+<div class="container">
+
+  <h1>{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %}</h1>
+
+    <p>{% trans "Your subscription has successfully been activated." %}</p>
+</div>
+
+
+
+{% endblock content %}

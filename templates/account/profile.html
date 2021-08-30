@@ -1,0 +1,186 @@
+{% extends "_base.html" %}
+{% load humanize %}
+
+
+{% block title %}{{ user.get_full_name }} | {% endblock %}
+
+{% block description %}user.profile.bio{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}user.profile.bio{% endblock og %}
+
+
+
+{% block content %}
+
+
+<div class="container">
+
+  
+
+
+    <div class="row">
+
+      <div class="col-12 col-md-6 col-lg-4 mb-4 text-center">
+        <div style="background-color: #DDAF94; border-radius: 30px;" class="pt-2">
+            {% if user.profile.photo %}
+            <a target="_blank" href="{{ user.profile.get_photo_url }}">
+              <img src="{{ user.profile.get_photo_url }}" class="img-config-2" alt="{{ user.get_full_name }}"> 
+              </a>
+            {% elif user.get_full_name %}
+
+              <img class="img-config-2" src="{{ auth0User.extra_data.picture }}" /> 
+      
+            {% else %}
+            <a target="_blank" href="{{ user.profile.get_photo_url }}">
+              <img src="{{ user.profile.get_photo_url }}" class="img-config2" alt="{{ user.get_full_name }}"> 
+              </a>
+          
+            {% endif %}
+
+            <br>
+            <br>
+            <p class="change-font-family"><big><strong>{{ user.profile.reputation|intcomma }}</strong></big> REPUTATION</p>
+        </div>
+        <div class="mt-4 text-left">
+
+          {% if user.profile.facebook_name %}
+          <a href="https://www.facebook.com/{{ user.profile.facebook_name }}" target="_blank" class="social-links"><i class="fa fa-facebook" style="font-size:24px;"></i></a>
+          {% endif %}
+
+          {% if user.profile.linkedin_name %}
+          <a href="https://www.linkedin.com/in/{{ user.profile.linkedin_name }}" target="_blank" class="social-links"><i class="fa fa-linkedin" style="font-size:24px;"></i></a>
+          {% endif %}
+          
+          {% if user.profile.twitter_name %}
+          <a href="https://twitter.com/{{ user.profile.twitter_name }}" target="_blank" class="social-links"><i class="fa fa-twitter" style="font-size:24px;"></i></a>
+          {% endif %}
+          
+          {% if user.profile.instagram_name %}
+            <a href="https://www.instagram.com/{{ user.profile.instagram_name }}" target="_blank" class="social-links"><i class="fa fa-instagram" style="font-size:24px;"></i></a>
+          {% endif %}
+
+          {% if user.profile.website %}
+            <a href="{{ user.profile.website }}" target="_blank" class="social-links"><i class="fa fa-globe" style="font-size:24px;"></i></a>
+          {% endif %}
+          
+        </div>
+        
+          
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+
+        <h2><strong class="green-color">{{ user.get_full_name }}</strong>
+          {% if request.user.username == user.username  %}
+
+          <a href="{% url 'delete' %}" style="color: crimson;"><i class="material-icons">delete_forever</i></a>
+          <a href="{% url 'edit' %}"><i class="material-icons">edit</i></a>
+
+          {% endif %}
+        </h2>
+        <ul>
+          {% if user.profile.university %}
+          <li style="list-style-type: none;"><i class="material-icons green-color" style="position: relative; top: 5px; right: 5px;">school</i>{{ user.profile.get_university_display }}</li>
+          {% endif %}
+          
+          {% if user.profile.department %}
+          <li style="list-style-type: none;">{{ user.profile.get_department_display }}</li>
+          {% endif %}
+
+          {% if user.profile.level %}
+          <li style="list-style-type: none;">{{ user.profile.get_level_display }}</li>
+          {% endif %}
+
+          {% if user.email %}
+          <li style="list-style-type: none;"><i class="material-icons green-color" style="position: relative; top: 5px; right: 5px;">mail</i>{{ user.email }}</li>
+          {% endif %}
+          
+          
+          
+          </ul>
+
+          {% if user.profile.bio %}
+          <div style="background-color: #fff;" class="p-2">
+            <p>{{ user.profile.bio|safe }}</p>
+          </div>
+          {% endif %}
+
+          
+  
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 text-center">
+        <div class="row">
+          <div class="col-6">
+            <span class=""><strong class="green-color">{% with questions_count as total_questions %}
+              {{ total_questions }} </strong><br>question{{ total_questions|pluralize }}
+            {% endwith %}</span>
+          </div>
+          <div class="col-6">
+            <span class=""><strong class="green-color">{% with answers_count as total_answers %}
+              {{ total_answers }} </strong><br>answer{{ total_answers|pluralize }}
+            {% endwith %}</span>
+          </div>
+        </div>
+
+        <hr>
+        <p>Member for {{ user.date_joined|timesince }}</p>
+        <p><i class="material-icons green-color" style="position: relative; top: 5px; right: 5px;">visibility</i> {% with user.profile.views as total_views %}
+          {{ total_views }} profile view{{ total_views|pluralize }}
+        {% endwith %}
+        </p>
+        <p>Last seen {{ user.last_login|timesince }} ago</p>
+       
+       
+      
+       </div>
+
+      
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <h5 class="change-font-family"><strong>Top Questions</strong></h5>
+        <ul>
+          {% for top_question in top_questions %}
+            <li style="list-style-type: disc;"><a href="{{ top_question.get_absolute_url }}">{{ top_question.title|truncatewords:15 }}</a></li>
+          {% empty %}
+          <div class="alert alert-warning" role="alert">Nothing to show</a></div>
+          {% endfor %}
+        </ul>
+        
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <h5 class="change-font-family"><strong>Top Answers</strong></h5>
+        <ul>
+          {% for top_answer in top_answers %}
+            <li style="list-style-type: disc;"><a href="{{ top_answer.question.get_absolute_url }}">{{ top_answer.answer|truncatewords:15|safe }}</a></li>
+            
+          {% empty %}
+            <div class="alert alert-warning" role="alert">Nothing to show</a></div>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <h5 class="change-font-family"><strong>Top Articles</strong></h5>
+        <ul>
+          {% for top_article in top_articles %}
+            <li style="list-style-type: disc;"><a href="{{ top_article.get_absolute_url }}">{{ top_article.title|truncatewords:15 }}</a></li>
+          {% empty %}
+          <div class="alert alert-warning" role="alert">Nothing to show</a></div>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    
+</div>
+  
+  
+{% endblock %}
+

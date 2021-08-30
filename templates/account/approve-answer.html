@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+
+{% block title %}Approve Question | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+
+  {% block content %}
+
+
+
+<div class="container">
+
+  <h3 class="change-font-family"><strong>Approve Answer</strong></h3>
+  <p>Are you sure you want to approve this question: {{ answer.answer|truncatewords_html:10|safe }}</p>
+  <hr>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn">YES, I Agree</button>
+     &laquo; &raquo;
+<a href="/account/dashboard/answer/{{ answer.id }}" class="btn">NO, take me back</a>
+
+</form>
+
+
+</div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,279 @@
+{% extends "_base.html" %}
+
+{% load humanize %}
+
+{% block title %}Questions | {% endblock %}
+
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+
+<p style="visibility: hidden; display: none;" id="user_id">{{ user.pk }}</p>
+
+<button type="button" id="modal-button10" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal10" style="visibility: hidden; display: none;" >
+  Launch demo modal
+</button>
+
+<div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title change-font-family" id="exampleModalLabel"><strong>Join Nesa Academy Community</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <small>You need to log-in to follow questions that interest you.</small>
+          
+          <br>
+          <br>
+          <small>
+            Join Nesa Academy to start following questions you like.
+          </small>
+          
+        </p>
+      </div>
+      <div class="modal-footer">
+
+        <p class="google">
+          <i class="fa fa-google" style="font-size:24px; position: relative; right: 15px;"></i>
+          <a href="/auth/login/auth0" style="color: #fff;">Login with Google</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container">
+  
+      <h2 class="change-font-family"><strong>Top Questions</strong> ({{ total|intcomma  }})</h2>
+      <hr class="my-4">
+
+
+      <div style="float: right;">
+        <a class="btn btn-color-2" href="/questions/ask/">Ask Question</a>
+     </div>
+   <div style="clear: both;">
+
+   </div>
+
+   
+   
+   {% if tag %}
+        <h5>Questions tagged with [<strong>{{ tag.name }}</strong>]</h5>
+    {% else %}
+    
+    {% if total > 5 %}
+    <br>
+    <p>
+      <b>Filter by:</b> &nbsp;
+     <a href="{% url 'questions:question-list' %}" class="btn btn-color-2">date</a>
+     <a href="{% url 'questions:question-list-top' %}" class="btn btn-3">votes</a>
+     <a href="{% url 'questions:question-list-top-views' %}" class="btn btn-3">views</a>
+   </p>
+    {% endif %}
+    
+    {% endif %}
+   <br>
+     <div class="main row">
+    
+
+      {% for question in questions %}
+     
+
+        <div class="col-md-6 col-lg-4">
+          <div class="question">
+          
+        <h6><b><a href="{{ question.get_absolute_url }}">{{ question.title|truncatewords_html:7 }}</a></b></h6>
+        <span style="float: right">
+          {% if request.user.username == question.author.username %}
+          <a href="{% url 'questions:delete_question' question.slug %}" style="color: crimson;"><i class="material-icons">delete</i></a>
+            <a href="{% url 'questions:edit_question' question.slug %}"><i class="material-icons">edit</i></a>
+          {% else %}
+          <div class="">
+            <span class="" type="" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="material-icons" style="font-size: xx-large; color: crimson">more_horiz</i>
+            </span>  
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><a href="" class="dropdown-item follow-question" data-question="{{ question.id }}"></a></li>
+              
+    
+            </ul>
+          </div>
+          {% endif %}
+        </span>
+       
+        <div>
+          <small>{{ question.body|truncatewords_html:5|safe }}</small>
+        </div>
+        <div style="margin-bottom: -10px;">
+        <strong>asked by:</strong><small class="author"> {% if question.author %}<a href="{% url 'profile' question.author.id question.author.username %}">{{ question.author.get_full_name }}</a> {% else %} <a href='https://nesaacademy.com/help/#anonymous-user'>Anonymous User</a>{% endif %} </small> <b>|</b> 
+        <small style="font-size: x-small;">{{ question.created|timesince }} ago</small>
+        </div>
+        
+        <p class="tags-wrapper mb-4 mt-0"> 
+          {% for tag in question.tags.all %}
+            <a href="{% url 'questions:question_list_by_tag' tag.slug %}" class="tags">
+              {{ tag.name }}
+            </a>
+            {% if not forloop.last %} {% endif %}
+          {% endfor %}
+        </p>
+
+
+
+        <i class="material-icons green-color" style="position: relative; top: 3px; right: -2px; font-size: large;">visibility</i> {% with question.question_views.count as total_views %}
+        {{ total_views }} view{{ total_views|pluralize }}
+         {% endwith %} &nbsp;<b>|</b> &nbsp; {% with question.answers.count as total_answers %}
+         {{ total_answers }} answer{{ total_answers|pluralize }}
+          {% endwith %} &nbsp;<b>|</b> &nbsp; {% with question.counter as total_votes %}
+          {{ total_votes }} vote{{ total_votes|pluralize }}
+           {% endwith %} 
+     </div>
+    </div>
+  
+
+  
+      {% empty %}
+        <p>No Question Yet, be the first to ask</p>
+      {% endfor %}
+    </div>
+    
+    
+    
+      <div class="paginator">
+        {% include "pagination.html" with page=questions %}
+      </div>  
+   
+         
+        
+      
+  </div>
+  
+
+  
+
+{% endblock content %}
+
+{% block script %}
+  <script>
+
+window.onload = (event) => {
+
+  var userId = parseInt(document.querySelector('#user_id').innerHTML)
+
+
+  let follow = document.querySelectorAll('.follow-question');
+
+  var csrfCookie =  getCookie('csrftoken')
+
+  follow.forEach(element => {
+  
+
+      let questionId = element.dataset.question
+      
+        if (userId) {
+        axios.get(`https://nesaacademy.com/follow/my_question_follow/${userId}/${questionId}/`)
+      .then(response => {
+  
+        if (response.data.length === 0) {
+          element.innerHTML = 'follow question'
+
+          element.addEventListener('click', (e) => {
+            e.preventDefault()
+
+          axios.post(`https://nesaacademy.com/follow/new_question_follow/`, {
+                  user: userId,
+                  question: questionId,
+                  }, {
+                    headers: {
+                      'X-CSRFTOKEN': csrfCookie,
+                    }
+                  })
+          .then(response => {
+            location.reload()
+            alert('Successful: Added to your followed questions')
+          })
+          .catch(err => {
+            alert(`${err}`)
+          });
+
+          }) 
+
+        } else {
+          element.innerHTML = 'unfollow question'
+
+          element.addEventListener('click', (e) => {
+            e.preventDefault()
+
+            axios.post(`https://nesaacademy.com/follow/delete_question_follow/${userId}/${questionId}/`, {
+          
+                  }, {
+                    headers: {
+                      'X-CSRFTOKEN': csrfCookie,
+                    }
+                  })
+          .then(response => {
+            location.reload()
+            alert('Successful: Deleted from your followed questions')
+          })
+          .catch(err => {
+            alert(`${err}`)
+          });
+
+          })
+        }
+
+
+      })
+      .catch(err => {
+            alert(`${err}`)
+          });
+      } else {
+        element.innerHTML = 'follow question'
+
+        element.addEventListener('click', (e) => {
+          e.preventDefault()
+          document.querySelector('#modal-button10').click()
+        })
+        
+      }
+
+
+    
+  });
+
+   // Function to get the csrf cookie in my browser
+
+   function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+  
+};
+
+   
+  </script>
+{% endblock script %}
+
+
+

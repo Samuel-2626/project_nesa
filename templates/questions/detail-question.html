@@ -1,0 +1,1419 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block title %}{{ question.title }} | {% endblock %}
+
+
+{% block description %}{{ question.title }}{% endblock description %}
+
+{% block keywords %}{% for tag in question.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}{% endblock keywords %}
+
+{% block og %}{{ question.title }}{% endblock og %}
+
+
+
+{% block content %}
+
+  <p style="visibility: hidden; display: none;" id="question_id">{{ question.id }}</p>
+
+  <p style="visibility: hidden; display: none;" id="user_reputation">{{ user.profile.reputation }}</p>
+
+  <p style="visibility: hidden; display: none;" id="user_id">{{ user.pk }}</p>
+
+  <p style="visibility: hidden; display: none;" id="author_id">{{ question.author.pk }}</p>
+
+  <p style="visibility: hidden; display: none;" id="question_title">{{ question.title }}</p>
+
+  <button type="button" id="modal-button1" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+  <button type="button" id="modal-button2" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+  <button type="button" id="modal-button3" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+  <button type="button" id="modal-button4" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+  <button type="button" id="modal-button5" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal5" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+  <button type="button" id="modal-button6" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal6" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+
+  <button type="button" id="modal-button7" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+  <button type="button" id="modal-button8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal8" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+  <button type="button" id="modal-button9" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal9" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+  <button type="button" id="modal-button10" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal10" style="visibility: hidden; display: none;" >
+    Launch demo modal
+  </button>
+
+
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title change-font-family" id="exampleModalLabel"><strong>Join Nesa Academy Community</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <small>You need <a href="" style="color: #DDAF94;">15 reputation</a> to upvote question or answer.</small>
+            
+            <br>
+            <br>
+            <small>
+              Join Nesa Academy to start earning reputation and unlocking new privileges like voting.
+            </small>
+            
+          </p>
+        </div>
+        <div class="modal-footer">
+
+          <p class="google">
+            <i class="fa fa-google" style="font-size:24px; position: relative; right: 15px;"></i>
+            <a href="/auth/login/auth0" style="color: #fff;">Login with Google</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title change-font-family" id="exampleModalLabel"><strong>Join Nesa Academy Community</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <small>You need <a href="" style="color: #DDAF94;">125 reputation</a> to downvote question or answer.</small>
+            
+            <br>
+            <br>
+            <small>
+              Join Nesa Academy to start earning reputation and unlocking new privileges like voting.
+            </small>
+            
+          </p>
+        </div>
+        <div class="modal-footer">
+
+          <p class="google">
+            <i class="fa fa-google" style="font-size:24px; position: relative; right: 15px;"></i>
+            <a href="/auth/login/auth0" style="color: #fff;">Login with Google</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <small>You need atleast<a href="" style="color: #DDAF94;"> 15 reputation</a> to upvote question or answer.</small>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+       
+    
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <small>You have already upvoted this question.</small>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+       
+    
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <small>You need atleast<a href="" style="color: #DDAF94;"> 125 reputation</a> to downvote question or answer.</small>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+       
+    
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <small>You have already downvoted this question.</small>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+       
+    
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <small>You have already upvoted this answer.</small>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+       
+    
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <small>You have already downvoted this answer.</small>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+       
+    
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title change-font-family" id="exampleModalLabel"><strong>Share Question</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <small>
+            <a href="whatsapp://send?text=nesaacademy.com{{ question.get_absolute_url }}" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on whatsapp"><i class="fa fa-whatsapp" style="font-size:24px;"></i></a>
+             &nbsp; 
+ 
+             <a href="https://www.facebook.com/sharer/sharer.php?u=nesaacademy.com{{ question.get_absolute_url }}&t={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook"><i class="fa fa-facebook" style="font-size:24px;"></i> </a>
+               
+               &nbsp; 
+               <a href="https://twitter.com/share?url=nesaacademy.com{{ question.get_absolute_url }}&text={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" style="font-size:24px;"></i></a>
+                 
+               &nbsp; 
+               <a href="https://www.linkedin.com/shareArticle?mini=true&url=nesaacademy.com{{ question.get_absolute_url }}&t={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Linkedin"><i class="fa fa-linkedin" style="font-size:24px;"></i></a>
+ 
+               &nbsp; 
+             <a href="http://www.reddit.com/submit?url=nesaacademy.com{{ question.get_absolute_url }}" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Mail"><i class="fa fa-reddit" style="font-size:24px;"></i></a>
+ 
+               &nbsp; 
+               <a href="{% url 'questions:question_share' question.slug %}"><i class="fa fa-envelope" style="font-size:24px;"></i></a>
+           </small>
+           
+        </div>
+          
+        <div class="modal-footer">
+          <p>The current license for this post is <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="blank">CC BY-SA 3.0</a></p>
+        </div>
+      
+       
+    
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title change-font-family" id="exampleModalLabel"><strong>Join Nesa Academy Community</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <small>You need to log-in to follow questions that interest you.</small>
+            
+            <br>
+            <br>
+            <small>
+              Join Nesa Academy to start following questions you like.
+            </small>
+            
+          </p>
+        </div>
+        <div class="modal-footer">
+
+          <p class="google">
+            <i class="fa fa-google" style="font-size:24px; position: relative; right: 15px;"></i>
+            <a href="/auth/login/auth0" style="color: #fff;">Login with Google</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item change-font-family"><a href="/questions/">All Questions</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ question.title|truncatewords_html:4 }}</li>
+      </ol>
+    </nav>
+  
+
+
+
+    {% if new_answer %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <span> Your answer as been submitted for review </span> <a href="" style="color:#DDAF94;">Learn more</a>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endif %}
+    
+
+  
+    <div class="row">
+      <div class="col-12 col-lg-8 mb-5">
+        <h2 class="change-font-family">{{ question.title }}   {% if request.user.username == question.author.username %}
+          <a href="{% url 'questions:delete_question' question.slug %}" style="color: crimson;"><i class="material-icons">delete</i></a>
+            <a href="{% url 'questions:edit_question' question.slug %}"><i class="material-icons">edit</i></a>
+          {% endif %}</h2>
+        <br>
+        <p class="mb-3 pb-3"><b>Asked:</b> {{ question.created|timesince }} ago &nbsp; <b>|</b> &nbsp; <b>Viewed:</b>  {% with question.question_views.count as total_views %}
+          {{ total_views }} time{{ total_views|pluralize }}
+           {% endwith %}   &nbsp; <b>|</b> &nbsp;
+          <b>Answers:</b> 
+            {% with answers.count as total_answers %}
+           {{ total_answers }} answer{{ total_answers|pluralize }}
+            {% endwith %}
+        
+        </p>
+        
+        <hr>
+        
+        <div class="row pt-3">
+          <div class="col-2">
+            <div style="text-align: center;">
+
+              {% if user.is_authenticated %}
+              
+              <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This question shows research effort; it is useful and clear" id="upvote_question"><i class="fa fa-chevron-circle-up" style="font-size:30px;"></i></a>
+              <p class="p-0 m-0">
+              <strong><small style="font-size: large;" id="question_counter"></small></strong>
+              </p>
+              <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This question does not show any research effort; it is unclear or not useful" id="downvote_question"><i class="fa fa-chevron-circle-down" style="font-size:30px;"></i></a>
+
+              {% else %}
+
+              <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This question shows research effort; it is useful and clear" class="disabled-upvote"><i class="fa fa-chevron-circle-up" style="font-size:30px;"></i></a>
+              <p class="p-0 m-0">
+              <strong><small style="font-size: large;" id="question_counter"></small></strong>
+              </p>
+              <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This question does not show any research effort; it is unclear or not useful" class="disabled-downvote"><i class="fa fa-chevron-circle-down" style="font-size:30px;"></i></a>
+
+
+              {% endif %}
+            
+            </div>
+            
+          </div>
+          <div class="col-10">
+            <div class="question-body" style="overflow-x:auto;">
+              <div class="">{{ question.body|safe }}</div>
+            </div>
+          </div>
+        </div>
+        
+        <br>
+        <div class="row">
+           <div class="col-6 col-lg-6">
+       
+            <a href="" id="share">Share</a> <b>|</b>
+            <a href="" id="follow"></a>
+          </div>
+          <div class="col-6 col-lg-6 mb-5">
+           <strong class="change-font-family">Asked by: </strong>{% if question.author %} 
+           
+           {% if question.author.profile.photo %}
+                    <img src="{{ question.author.profile.get_photo_url }}" alt="" class="img-config">
+                  {% else %}
+                    <img src="{{ auth0userQuestionProfile.extra_data.picture }}" class="img-config" />
+                  {% endif %}
+           
+           <!-- <img src="{{ question.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}">  -->
+           {% endif %}
+            <small>{% if question.author %}<a href="{% url 'profile' question.author.id question.author.username %}">{{ question.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ question.created }} </small>
+            
+            
+        </div>
+        </div>
+        
+
+          <hr>
+          <h5 class="change-font-family">Answers</h5>
+
+          <hr>
+          <br>
+          {% for answer in answers %}
+          <div class="row">
+            <div class="col-2">
+              <div style="text-align: center;">
+                {% if user.is_authenticated %}
+              
+              <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This answer shows research effort; it is useful and clear" class="upvote_answer" data-answer="{{ answer.id }}" data-author="{{ answer.author.pk }}"><i class="fa fa-chevron-circle-up" style="font-size:30px;"></i></a>
+            <p class="m-0 p-0">
+              <strong><small style="font-size: large;" class="answer_counter" data-answer="{{ answer.id }}"></small></strong>
+           </p>
+              <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This answer does not show any research effort; it is unclear or not useful" class="downvote_answer" data-answer="{{ answer.id }}" data-author="{{ answer.author.pk }}"><i class="fa fa-chevron-circle-down" style="font-size:30px;"></i></a>
+
+              {% else %}
+
+              <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This answer shows research effort; it is useful and clear" class="disabled-upvote"><i class="fa fa-chevron-circle-up" style="font-size:30px;"></i></a>
+              <p class="m-0 p-0">
+              <strong><small style="font-size: large;" class="answer_counter" data-answer="{{ answer.id }}"></small></strong>
+             </p>
+              <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This answer does not show any research effort; it is unclear or not useful" class="disabled-downvote"><i class="fa fa-chevron-circle-down" style="font-size:30px;"></i></a>
+
+
+              {% endif %}
+              <p class="pt-1 mt-1">
+                {% if request.user.username == question.author.username and answer.accepted == False %}
+                <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="Accept answer" class="accept_answer" data-answer="{{ answer.id }}" data-author="{{ answer.author.pk }}"><i class="material-icons" style="font-size: 30px; color: crimson;">lightbulb_outline</i></a>
+                {% elif request.user.username != question.author.username and answer.accepted == True %}
+                <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This answer has been accepted by the author of this question" data-answer="{{ answer.id }}" onclick="return false;"><i class="material-icons" style="font-size: 30px; color: limegreen;">check</i></a>
+                {% elif request.user.username == question.author.username and answer.accepted == True %}
+                <a href="" data-bs-toggle="tooltip" data-bs-placement="right" title="This answer has been accepted by the author of the question" data-answer="{{ answer.id }}" onclick="return false;"><i class="material-icons" style="font-size: 30px; color: limegreen;">check</i></a>
+                {% endif %}
+              </p>
+              </div>
+              
+            </div>
+            <div class="col-10">
+              <div class="question-body" style="overflow-x:auto;">
+                <p>{{ answer.answer|safe }}</p>
+              </div>
+            </div>
+          </div>
+          
+          
+           <br>
+       
+            <div class="row">
+              <div class="col-6 col-lg-6">
+    
+              </div>
+              <div class="col-6 col-lg-6 mb-5">
+               <strong class="change-font-family">Answered by: </strong>
+               {% if answer.author %} 
+
+               <!-- {% if answer.author.profile.photo %}
+                    <img src="{{ answer.author.profile.get_photo_url }}" alt="" class="img-config">
+                  {% else %}
+                    <img src="{{ auth0userAnswerProfile.extra_data.picture }}" class="img-config" />
+                  {% endif %} -->
+               
+               
+               <img src="{{ answer.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}"> {% endif %}
+                <small>{% if answer.author %}<a href="{% url 'profile' answer.author.id answer.author.username %}">{{ answer.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ answer.created|timesince }} ago </small>
+                
+
+                {% if request.user.username == answer.author.username %}
+                <a href="{% url 'questions:delete_answer' answer.id question.slug %}" style="color: crimson;"><i class="material-icons">delete</i></a>
+                  <a href="{% url 'questions:edit_answer' answer.id question.slug %}"><i class="material-icons">edit</i></a>
+                {% endif %}
+                
+              </div>
+            </div>
+          {% empty %}
+          <div class="alert alert-warning" role="alert">
+            There are no answers yet. Be the first
+          </div>
+  
+          {% endfor %}
+
+          <hr>
+
+          <h3 class="change-font-family"><strong>Answer this question</strong></h3>
+          {% if user.is_authenticated %}
+          <form method="post" enctype="multipart/form-data" novalidate>
+            {{ answer_form.media }}
+            {{ answer_form|crispy }}
+            {% csrf_token %}
+            <br>
+            <button type="submit" class="btn btn-color-2" style="width: 100%">Add Answer</button>
+          </form>
+          <br>
+          <p>I don't know how to answer a question?<a href="https://nesaacademy.com/help/#how-to-answer-a-question"> Check here!</a></p>
+        
+          {% else %}
+            <div class="alert alert-danger" role="alert">
+              You need to <a href="{% url 'login' %}">login</a>  to answer a question
+            </div>
+          {% endif %}
+        </div>
+
+      
+      <div class="col-12 col-lg-4">
+        
+        <h3 class="change-font-family"><strong>Related Questions</strong></h3>
+        <ul>
+          {% for question in similar_questions %}
+          <li style="list-style-type: georgian;">
+              <a href="{{ question.get_absolute_url }}">{{ question.title|truncatewords:10 }}</a>
+          </li>
+          {% empty %}
+      </ul>      
+      <p>There are no similar questions yet</p>
+    
+  </div>
+  
+      {% endfor %}
+      </div>
+    </div>
+      
+  
+  
+
+  
+
+{% endblock content %}
+
+{% block script %}
+  <script>
+
+    
+    
+
+    // Bootstrap tooltip widget
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    // Get counter value for question
+
+    var questionId = document.querySelector('#question_id').innerHTML
+    var authorId = document.querySelector('#author_id').innerHTML
+    var questionTitle = document.querySelector('#question_title').innerHTML
+  
+    var csrfCookie =  getCookie('csrftoken')
+
+    const getQuestionCounter = () => {
+    axios.get(`https://nesaacademy.com/questions/question-counter/${questionId}/`)
+    .then(response => {
+      var questionCounter = response.data.counter;
+      document.querySelector('#question_counter').innerHTML = questionCounter
+    })
+    .catch(err => {
+            console.log(`${err}`)
+          });
+    };
+    getQuestionCounter();
+
+
+    // Show modal when user clicks a disabled upvote or downvote button
+
+    let disabledButton1 = document.querySelectorAll('.disabled-upvote')
+    let disabledButton2 = document.querySelectorAll('.disabled-downvote')
+
+    
+    disabledButton1.forEach(element => {
+      element.addEventListener('click', showModal1)
+    });
+
+    function showModal1(e) {
+      e.preventDefault();
+      document.querySelector('#modal-button1').click()
+    }
+
+    disabledButton2.forEach(element => {
+      element.addEventListener('click', showModal2)
+    });
+
+    function showModal2(e) {
+      e.preventDefault();
+      document.querySelector('#modal-button2').click()
+    }
+
+    let upvoteButton = document.querySelector('#upvote_question')
+    var userReputation = document.querySelector('#user_reputation')
+    var userId = parseInt(document.querySelector('#user_id').innerHTML)
+
+    try {
+      upvoteButton.addEventListener('click', upvote)
+    } catch (error) {
+      
+    }
+
+    
+
+    function upvote(e) {
+      e.preventDefault();
+      if (parseInt(userReputation.innerHTML) < 15) {
+        document.querySelector('#modal-button3').click()
+      } else {
+
+        axios.get(`https://nesaacademy.com/questions/question-vote-detail/${userId}/${questionId}`)
+        .then(response => {
+    
+        
+          if (response.data.length === 0) {
+
+            // Upvote question and increase question counter by one            
+    
+            axios.post(`https://nesaacademy.com/questions/question-vote-create/`, {
+              author: userId,
+              question: questionId,
+              status: 'upvote',
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+   
+              axios.put(`https://nesaacademy.com/questions/change-question-counter/${questionId}/`, {
+              counter: parseInt(document.querySelector('#question_counter').innerHTML) + 1
+
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+        
+              getQuestionCounter();
+
+              axios.post(`https://nesaacademy.com/questions/profile-plus/${authorId}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${authorId}/Your question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+ 
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+            
+          } else if (response.data[0].status === 'upvote') {
+
+            // Do nothing -- show modal to refuse request
+            document.querySelector('#modal-button4').click()
+          } else {
+
+            // Then there is a downvote -- upvote question by two and change vote to upvote
+            axios.post(`https://nesaacademy.com/questions/question-change-status-upvote/${userId}/${questionId}/`, {
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+
+              axios.put(`https://nesaacademy.com/questions/change-question-counter/${questionId}/`, {
+              counter: parseInt(document.querySelector('#question_counter').innerHTML) + 2
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+           
+              getQuestionCounter();
+
+              axios.post(`https://nesaacademy.com/questions/profile-plus/${authorId}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${authorId}/Your question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+
+
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+ 
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+
+          }
+        })
+        .catch(err => {
+            alert(`${err}`)
+          });
+        };
+
+      }
+
+      let downvoteButton = document.querySelector('#downvote_question')
+
+      try {
+        downvoteButton.addEventListener('click', downvote)
+      } catch (error) {
+      
+      }
+      
+
+      function downvote(e) {
+        e.preventDefault()
+
+        if (parseInt(userReputation.innerHTML) < 125) {
+        document.querySelector('#modal-button5').click()
+      } else {
+
+        axios.get(`https://nesaacademy.com/questions/question-vote-detail/${userId}/${questionId}`)
+        .then(response => {
+    
+        
+          if (response.data.length === 0) {
+
+            // Upvote question and increase question counter by one            
+    
+            axios.post(`https://nesaacademy.com/questions/question-vote-create/`, {
+              author: userId,
+              question: questionId,
+              status: 'downvote',
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+   
+
+              axios.put(`https://nesaacademy.com/questions/change-question-counter/${questionId}/`, {
+              counter: parseInt(document.querySelector('#question_counter').innerHTML) - 1
+              }, {
+                headers: {
+                  'X-CSRFTOKEN': csrfCookie,
+                }
+              })
+              .then(response => {
+          
+                getQuestionCounter();
+
+                axios.post(`https://nesaacademy.com/questions/profile-minus/${authorId}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${authorId}/Your question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+              })
+              .catch(err => {
+            alert(`${err}`)
+          });
+ 
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+            
+          } else if (response.data[0].status === 'downvote') {
+
+            // Do nothing -- show modal to refuse request
+            document.querySelector('#modal-button6').click()
+          } else {
+
+            // Then there is a downvote -- upvote question by two and change vote to upvote
+            axios.post(`https://nesaacademy.com/questions/question-change-status-downvote/${userId}/${questionId}/`, {
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+      
+
+              axios.put(`https://nesaacademy.com/questions/change-question-counter/${questionId}/`, {
+              counter: parseInt(document.querySelector('#question_counter').innerHTML) - 2
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+           
+              getQuestionCounter();
+
+              axios.post(`https://nesaacademy.com/questions/profile-minus/${authorId}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${authorId}/Your question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+ 
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+
+          }
+        })
+        .catch(err => {
+            alert(`${err}`)
+          });
+        };
+      }
+
+      let acceptThisAnswer = document.querySelectorAll('.accept_answer')
+      acceptThisAnswer.forEach(element => {
+        element.addEventListener('click', (e) => {
+          
+          e.preventDefault()
+
+          let answer_id = element.dataset.answer
+          let answer_author_id = element.dataset.author
+
+          axios.put(`https://nesaacademy.com/questions/change-answer-accepted/${answer_id}/`, {
+              accepted: true
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+
+              axios.post(`https://nesaacademy.com/questions/profile-plus/${answer_author_id}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was accepted by the author of the question and you just earned 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+
+              location.reload()
+         
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+        
+      });
+      
+
+    });
+
+    let upvoteAnswer = document.querySelectorAll('.upvote_answer')
+    let downvoteAnswer = document.querySelectorAll('.downvote_answer')
+    let answerCounter = document.querySelectorAll('.answer_counter')
+
+    const getAnswerCounter = () => {
+      answerCounter.forEach(element => {
+   
+
+        let answer_id = element.dataset.answer
+
+        axios.get(`https://nesaacademy.com/questions/answer-counter/${answer_id}/`)
+          .then(response => {
+            let counter = response.data.counter;
+               element.innerHTML = counter
+          })
+          .catch(err => {
+            console.log(`${err}`)
+          });
+        
+      });
+    };
+    getAnswerCounter();
+
+
+    upvoteAnswer.forEach(element => {
+      element.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        let answer_author_id = element.dataset.author
+
+        if (parseInt(userReputation.innerHTML) < 15) {
+        document.querySelector('#modal-button3').click()
+      } else {
+
+        axios.get(`https://nesaacademy.com/questions/answer-vote-list/${userId}/${element.dataset.answer}/`)
+          .then(response => {
+       
+   
+            if (response.data.length === 0) {
+
+              axios.post(`https://nesaacademy.com/questions/answer-vote-create/`, {
+              author: userId,
+              answer: element.dataset.answer,
+              status: 'upvote',
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            }).then(response => {
+
+              axios.get(`https://nesaacademy.com/questions/answer-counter/${element.dataset.answer}/`)
+              .then(response => {
+                let count = response.data.counter;
+
+                axios.put(`https://nesaacademy.com/questions/change-answer-counter/${element.dataset.answer}/`, {
+                counter: count + 1
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+            
+                  getAnswerCounter();
+
+                  axios.post(`https://nesaacademy.com/questions/profile-plus/${answer_author_id}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+
+              })
+              .catch(err => {
+            alert(`${err}`)
+          });
+
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+
+            } else if (response.data[0].status === 'upvote') {
+
+            // Do nothing -- show modal to refuse request
+            document.querySelector('#modal-button7').click()
+
+            } else {
+
+               // Then there is a downvote -- upvote answer by two and change vote to upvote
+            axios.post(`https://nesaacademy.com/questions/answer-change-status-upvote/${userId}/${element.dataset.answer}/`, {
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+      
+
+              axios.get(`https://nesaacademy.com/questions/answer-counter/${element.dataset.answer}/`)
+              .then(response => {
+                let count = response.data.counter;
+
+                axios.put(`https://nesaacademy.com/questions/change-answer-counter/${element.dataset.answer}/`, {
+                counter: count + 2
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+            
+                  getAnswerCounter();
+
+                  axios.post(`https://nesaacademy.com/questions/profile-plus/${answer_author_id}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+
+              })
+              .catch(err => {
+            alert(`${err}`)
+          });
+
+ 
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+
+            }
+
+          })
+          .catch(err => {
+            alert(`${err}`)
+          });
+
+        }
+        
+
+      })
+    });
+
+
+
+    downvoteAnswer.forEach(element => {
+      element.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        let answer_author_id = element.dataset.author
+
+        if (parseInt(userReputation.innerHTML) < 125) {
+        document.querySelector('#modal-button5').click()
+      } else {
+
+        axios.get(`https://nesaacademy.com/questions/answer-vote-list/${userId}/${element.dataset.answer}/`)
+          .then(response => {
+       
+   
+            if (response.data.length === 0) {
+
+              axios.post(`https://nesaacademy.com/questions/answer-vote-create/`, {
+              author: userId,
+              answer: element.dataset.answer,
+              status: 'downvote',
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            }).then(response => {
+
+              axios.get(`https://nesaacademy.com/questions/answer-counter/${element.dataset.answer}/`)
+              .then(response => {
+                let count = response.data.counter;
+
+                axios.put(`https://nesaacademy.com/change-answer-counter/${element.dataset.answer}/`, {
+                counter: count - 1
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+            
+                  getAnswerCounter();
+
+                  axios.post(`https://nesaacademy.com/questions/profile-minus/${answer_author_id}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+
+              })
+              .catch(err => {
+            alert(`${err}`)
+          });
+
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+
+            } else if (response.data[0].status === 'downvote') {
+
+            // Do nothing -- show modal to refuse request
+            document.querySelector('#modal-button8').click()
+
+            } else {
+
+               // Then there is a downvote -- upvote answer by two and change vote to upvote
+            axios.post(`https://nesaacademy.com/questions/answer-change-status-downvote/${userId}/${element.dataset.answer}/`, {
+            }, {
+              headers: {
+                'X-CSRFTOKEN': csrfCookie,
+              }
+            })
+            .then(response => {
+      
+
+              axios.get(`https://nesaacademy.com/questions/answer-counter/${element.dataset.answer}/`)
+              .then(response => {
+                let count = response.data.counter;
+
+                axios.put(`https://nesaacademy.com/questions/change-answer-counter/${element.dataset.answer}/`, {
+                counter: count - 2
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+            
+                  getAnswerCounter();
+
+                  axios.post(`https://nesaacademy.com/questions/profile-minus/${answer_author_id}/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+
+                  axios.post(`https://nesaacademy.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
+                  
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+                .then(response => {
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+               
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+                })
+                .catch(err => {
+            alert(`${err}`)
+          });
+
+              })
+              .catch(err => {
+            alert(`${err}`)
+          });
+
+ 
+            })
+            .catch(err => {
+            alert(`${err}`)
+          });
+
+            }
+
+          })
+          .catch(err => {
+            alert(`${err}`)
+          });
+
+        }
+        
+
+      })
+    });
+
+
+
+    // Follow Application
+    var follow = document.querySelector('#follow');
+
+    if (userId) {
+      axios.get(`https://nesaacademy.com/follow/my_question_follow/${userId}/${questionId}/`)
+    .then(response => {
+ 
+      if (response.data.length === 0) {
+        follow.innerHTML = 'follow'
+
+        follow.addEventListener('click', (e) => {
+          e.preventDefault()
+
+        axios.post(`https://nesaacademy.com/follow/new_question_follow/`, {
+                user: userId,
+                question: questionId,
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+        .then(response => {
+          location.reload()
+          alert('Successful: Added to your followed questions')
+        })
+        .catch(err => {
+            alert(`${err}`)
+          });
+
+        }) 
+
+      } else {
+        follow.innerHTML = 'unfollow'
+
+        follow.addEventListener('click', (e) => {
+          e.preventDefault()
+
+          axios.post(`https://nesaacademy.com/follow/delete_question_follow/${userId}/${questionId}/`, {
+        
+                }, {
+                  headers: {
+                    'X-CSRFTOKEN': csrfCookie,
+                  }
+                })
+        .then(response => {
+          location.reload()
+          alert('Successful: Deleted from your followed questions')
+        })
+        .catch(err => {
+            alert(`${err}`)
+          });
+
+        })
+      }
+
+
+    })
+    .catch(err => {
+            alert(`${err}`)
+          });
+    } else {
+      follow.innerHTML = 'follow'
+
+      follow.addEventListener('click', (e) => {
+        e.preventDefault()
+        document.querySelector('#modal-button10').click()
+      })
+      
+    }
+
+    
+
+
+    // Share Application
+
+    var share = document.querySelector('#share')
+
+    share.addEventListener('click', (e) => {
+
+      e.preventDefault()
+
+      document.querySelector('#modal-button9').click()
+
+    })
+
+
+
+  // Function to get the csrf cookie in my browser
+
+  function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+  </script>
+{% endblock script %}

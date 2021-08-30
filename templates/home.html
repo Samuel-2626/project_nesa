@@ -1,0 +1,221 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+{% block content %}
+
+<button type="button" id="modal-button9" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal9" style="visibility: hidden; display: none;" >
+  Launch demo modal
+</button>
+
+
+<div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title change-font-family" id="exampleModalLabel"><strong>Subscribe to our newsletter</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    
+            <form enctype="multipart/form-data" method="post" action="/newsletter/nesa-academy/subscribe/">
+              {% csrf_token %}
+              <label for="id_email_field">E-mail:</label> <input type="email" name="email_field" required="" id="id_email_field" class="form-control">
+              <br>
+              <button id="id_submit" name="submit" value="Subscribe" type="submit" class="btn" style="min-width: 100%;">Subscribe</button>
+              </form>
+         
+      </div>
+
+      <div class="modal-footer">
+        <p class="change-font-family"><b>#stayintheloop</b></p>
+      </div>
+        
+   
+     
+  
+    </div>
+  </div>
+</div>
+
+
+<div class="first_section">
+  <div class="container">
+  
+    
+    <div class="row">
+     
+        <div class="col-lg-6 text-center">
+          <br>
+          <h1 style="font-size: 4em;" class="change-font-family"><strong>Q & A</strong> </h1>
+          <br>
+          <p><strong>A constructive and inclusive question and answer site for economists.</strong></p>
+          <a href="/questions/ask/" class="btn" style="padding-left: 35px; padding-right: 35px;">Ask Question</a>
+          <br>
+          <br>
+          <a href="https://nesaacademy.com/help/#how-to-ask-a-question"  class="btn btn-3" style="padding-left: 35px; padding-right: 35px;">Learn more</a>
+        </div>
+        <div class="col-lg-6">
+          <br>
+          <br>
+          <img src="{% static 'images/top-question.png' %}" class="img-fluid img-thumbnail student-img-2">
+        </div>
+      
+      
+    </div>
+  </div>
+</div>
+ 
+<div class="third_section">
+  <div class="container">
+  
+    
+    <div class="row">
+     
+        <div class="col-lg-6 text-center">
+          <br>
+          <h1 style="font-size: 4em;" class="change-font-family"><strong>Articles</strong> </h1>
+          <br>
+          <p><strong>Stay up-to-date with current articles on economic issues</strong></p>
+       
+          <br>
+          <br>
+          <a href="/articles"  class="btn btn-3" style="padding-left: 35px; padding-right: 35px;">View more</a>
+        </div>
+        <div class="col-lg-6">
+          <br>
+          <br>
+          <img src="{% static 'images/tuts.jpg' %}" class="img-fluid img-thumbnail student-img-2">
+        </div>
+      
+      
+    </div>
+  </div>
+</div>
+<!-- 
+<div class="fourth_section">
+  <div class="container">
+  
+    
+    <div class="row">
+     
+        <div class="col-lg-6 text-center">
+          <br>
+          <h1 style="font-size: 4em;"><strong>Tutorials</strong> </h1>
+          <br>
+          <p><strong>Detailed courses for your learning</strong></p>
+          <a href="/courses/" class="btn" style="padding-left: 35px; padding-right: 35px;">View More</a>
+          <br>
+          <br>
+          <a href="https://www.nesaacademy.com/help/"  class="btn btn-3" style="padding-left: 35px; padding-right: 35px;">Learn more</a>
+        </div>
+        <div class="col-lg-6">
+          <br>
+          <br>
+          <img src="{% static 'images/courses.jpg' %}" class="img-fluid img-thumbnail student-img-2">
+        </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+<div class="third_section">
+  <div class="container">
+  
+    
+    <div class="row">
+     
+        <div class="col-lg-6 text-center">
+          <br>
+          <h1 style="font-size: 4em;"><strong>Courses</strong> </h1>
+          <br>
+          <p><strong>Detailed courses for your learning</strong></p>
+          <a href="/courses/" class="btn" style="padding-left: 35px; padding-right: 35px;">View More</a>
+          <br>
+          <br>
+          <a href="https://www.nesaacademy.com/help/"  class="btn btn-3" style="padding-left: 35px; padding-right: 35px;">Learn more</a>
+        </div>
+        <div class="col-lg-6">
+          <br>
+          <br>
+          <img src="{% static 'images/courses.jpg' %}" class="img-fluid img-thumbnail student-img-2">
+        </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+<div class="first_section">
+  <div class="container">
+  
+    
+    <div class="row">
+     
+        <div class="col-lg-6 text-center">
+          <br>
+          <h1 style="font-size: 4em;"><strong>Quizes</strong> </h1>
+          <br>
+          <p><strong>Fun Quizes for you to pratice with</strong></p>
+          <a href="/quiz/" class="btn" style="padding-left: 35px; padding-right: 35px;">View More</a>
+          <br>
+          <br>
+          <a href="https://www.nesaacademy.com/help/"  class="btn btn-3" style="padding-left: 35px; padding-right: 35px;">Learn more</a>
+        </div>
+        <div class="col-lg-6">
+          <br>
+          <br>
+          <img src="{% static 'images/quiz.jpg' %}" class="img-fluid img-thumbnail student-img-2">
+        </div>
+      
+      
+    </div>
+  </div>
+</div> -->
+
+
+
+
+ <div class="contact" id="contact">
+  <div class="container">
+  
+    <h3 class="change-font-family"><strong>Send Your Feedback</strong></h3>
+  <form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+    <br>
+    <div class="text-center">
+  <button type="submit" class="btn" style="width: 100%">Send Mail</button>
+  </div>
+</form>
+
+  </div>
+</div>
+
+
+
+
+{% endblock content %}
+
+{% block script %}
+
+<script>
+  function myFunction() {
+    document.querySelector('#modal-button9').click()
+}
+
+setTimeout(myFunction, 10000)
+</script>
+
+{% endblock script %}
+

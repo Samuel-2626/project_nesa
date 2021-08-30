@@ -1,0 +1,92 @@
+{% extends "_base.html" %}
+{% load article_tags %}
+{% load humanize %}
+{% load static %}
+
+
+
+{% block title %}
+  Articles |
+{% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+    
+  <h2 class="change-font-family"><strong>Top Articles</strong> ({% total_posts  %})
+ 
+ &nbsp;<a href="/articles/search/"><i class="material-icons" style="color: crimson; font-size:30px; position: relative; top: 7px;">search</i></a>
+ </h2>
+
+ <hr class="my-4">
+
+ <div style="clear: both;">
+
+</div>
+
+
+<br>
+  
+  
+      {% if tag %}
+        <h5>Articles tagged with <strong> [{{ tag.name }}] </strong></h5>
+        <br>
+      {% endif %}
+
+      <div class="row">
+          
+        {% for post in posts %}
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div>
+            <h4><a href="{{ post.get_absolute_url }}">{{  post.title|truncatewords:10 }}</a><small style="font-size: x-small; float: right;" class="green-color">({{ post.created }})</small> </h4>
+            <a href="{{ post.image.url }}" target="_blank">
+              <img src="{{ post.image.url }}" class="mb-4 img-fluid">
+            </a>
+             <p> 
+                {% for tag in post.tags.all %}
+                <a href="{% url 'articles:post_list_by_tag' tag.slug %}" class="tags">
+                  {{ tag.name }}
+                </a>
+                {% if not forloop.last %} {% endif %}
+              {% endfor %}
+              </p>
+
+              <p><b>By:</b>{% if post.author %}<a href="{% url 'profile' post.author.id post.author.username %}"> {{ post.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</p>
+        
+              <i class="material-icons green-color" style="position: relative; top: 5px; right: 5px;">visibility</i> {% with post.views as total_views %}
+              {{ total_views }} view{{ total_views|pluralize }}
+              {% endwith %}
+        </div>
+
+        <hr>
+        </div>
+        {% empty %}
+        <div class="alert alert-warning" role="alert">
+  No article posted yet!
+</div>
+
+           
+      {% endfor %}
+
+
+         
+
+          
+        
+
+
+  </div>
+</div>
+  
+
+{% endblock content %}

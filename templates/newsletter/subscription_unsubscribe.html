@@ -1,0 +1,42 @@
+{% extends "_base.html" %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load i18n %}
+{% block title %}
+{% trans "Newsletter unsubscribe" %} |  
+{% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+<div class="container">
+ <h1>{% trans "Newsletter unsubscribe" %} {{ newsletter.title }}</h1>
+
+    {% if error %}
+        <p>{% trans "Due to a technical error we were not able to submit your confirmation email. This could be because your email address is invalid." %}</p>
+
+        {% comment %} Replace the the following dummy with a valid email address and remove this comment.
+
+        <p>{% trans "If the error persists, please don't hesitate to contact us at the following email address:" %} <a href="mailto:info@foobar.com">info@foobar.com</a></p>
+
+        {% endcomment %}
+    {% else %}
+        <form enctype="multipart/form-data" method="post" action=".">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <p><input id="id_submit" name="submit" value="{% trans "Unsubscribe" %}" type="submit" /></p>
+        </form>
+    {% endif %}
+</div>
+
+
+
+{% endblock content %}

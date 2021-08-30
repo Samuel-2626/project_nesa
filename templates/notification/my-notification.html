@@ -1,0 +1,44 @@
+{% extends "_base.html" %}
+{% load humanize %}
+
+{% block title %}Notification | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+{% block content %}
+
+
+
+<div class="container">
+
+  <h2 class="change-font-family"><strong>My Notifications</strong></h2>
+  <hr class="my-4">
+  <br>
+
+  <ul class="notification">
+    {% for notification in notifications %}
+      {% if notification.date > observer.date %}
+        <small style="background-color: green; color: white; padding: 3px;">new</small>
+      {% endif %}
+      <li style="background-color: #266150; color: #E8CEBF; padding: 10px; margin-bottom: 10px;">{{ notification.message|safe }} <br> <small style="color: #DDAF94;">{{ notification.date|timesince }} ago</small></li>
+    {% empty %}
+    <div class="alert alert-warning" role="alert">
+      notification is empty
+    </div>
+    {% endfor %}
+  </ul>
+  
+  <div class="paginator">
+        {% include "pagination.html" with page=notifications %}
+      </div>  
+
+</div>
+  
+  
+{% endblock %}
+

@@ -1,0 +1,75 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load static %}
+
+
+{% block title %}Users | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+  <h2 class="change-font-family"><strong>Top Users</strong> ({{ total_users|intcomma  }})</h2>
+  <hr class="my-4">
+
+  <form method="get" action={% url 'users' %}>
+   
+ 
+    <input type="search" placeholder="Search by Name..." name="q_user" id="user-search" required {% if user_query %} value="{{ user_query }} {% endif %}">
+</form>
+
+<br>
+
+<div class="row d-flex align-items-center">
+           
+    
+  {% for user in users %}
+
+  <div class="col-4 col-md-3 col-lg-2 text-center mb-4">
+  {% if user.get_full_name %}
+  <h6><strong><a href="{% url 'profile' user.id user.username %}">{{ user.get_full_name }}</a></strong></h6>
+  {% else %}
+  <h6><strong>Nesa Academy [Admin]</strong></h6>
+  {% endif %}
+  
+
+    <a target="_blank" href="{{ user.profile.get_photo_url }}">
+<img src="{{ user.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}"> 
+</a>
+
+{% if user.profile.get_university_display  %}
+    <small style="display: block;">
+      {{ user.profile.get_university_display }}
+    </small>
+    {% endif %}
+
+  <small style="display: block; background-color: #DDAF94; color: #266150;" class="mt-2">{{ user.profile.reputation|intcomma }} reputation</small>
+
+</div>
+{% empty %}      
+
+   <p>No user found!</p>
+  {% endfor %}
+  
+  </div>
+    
+  <div class="paginator">
+    {% include "pagination.html" with page=users %}
+  </div>
+  
+  
+
+  </div>
+{% endblock %}
+
+
+

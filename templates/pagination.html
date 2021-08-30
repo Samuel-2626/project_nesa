@@ -1,0 +1,24 @@
+{% if page.has_other_pages %}
+  <ul class="pagination">
+    {% if page.has_previous %}
+      <li class="page-item"><a href="?page={{ page.previous_page_number }}" class="page-link change-font-family" style="color: #DDAF94;">Previous</a></li>
+    {% else %}
+      <li class="page-item disabled"><a class="page-link change-font-family" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+    {% endif %}
+    {% for i in page.paginator.page_range %}
+      {% if page.number == i %}
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#" style="color: #DDAF94; background-color: #E8CEBF; border: 1px solid #DDAF94;">{{ i }} </a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}" style="color: #DDAF94;">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page.has_next %}
+      <li class="page-item"><a class="page-link change-font-family" href="?page={{ page.next_page_number }}" style="color: #DDAF94;">Next</a></li>
+    {% else %}
+    <li class="page-item disabled"><a class="page-link change-font-family" href="#" tabindex="-1" aria-disabled="true">Next</a></li>
+      
+    {% endif %}
+    
+    
+  </ul>
+{% endif %}

@@ -1,0 +1,45 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Log-in | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+
+
+  
+  <div class="container text-center">
+
+  <img src="{% static 'images/logo.png' %}" width="80" alt="Logo">
+  <br>
+      
+       {% if request.user.is_authenticated %}
+            <h2>You are already Logged In</h2>
+      {% else %}
+
+      <h2 class="change-font-family"><strong>Welcome to Nesa Academy  &#129312;</strong></h2>
+
+      <p class="slideanim">
+        Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics, and Statistics.
+      </p>
+        
+      <p class="google-center slideanim">
+        <i class="fa fa-google" style="font-size:24px; position: relative; right: 15px;"></i>
+        <a href="/auth/login/auth0" style="color: #fff;">Login with Google</a>
+      </p>
+  
+    
+      {% endif %}
+    
+  </div>
+  
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "_base.html" %}
+{% load humanize %}
+
+{% block title %}{{ question.title }} | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+
+{% block content %}
+
+<div class="container">
+    
+  <h5><strong>{{ question.title }}</strong>  <a href="{% url 'delete-question-admin' question.id %}" style="color: crimson;"><i class="material-icons">delete</i></a>
+    <a href="{% url 'message-admin' question.id %}"><i class="material-icons">message</i></a> <a href="/account/dashboard/question/{{ question.id }}/approve"><i class="material-icons">check</i></a></h5>
+
+  <div class="question-body">
+    {{ question.body|safe }}
+  </div>
+
+  <small>Created: {{ question.created }}</small> <b>|</b>  
+  <small>Updated: {{ question.updated }}</small> <b>|</b>
+  <small>Author: {{ question.author.get_full_name }}</small>
+
+  <p>
+    {% for tag in question.tags.all %}
+            <a href="" class="tags">
+              {{ tag.name }}
+            </a>
+            {% if not forloop.last %} {% endif %}
+          {% endfor %}
+  </p>
+    
+  
+</div>
+
+  
+{% endblock %}

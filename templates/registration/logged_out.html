@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}Logged out | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+
+<div class="container text-center">
+
+  <img src="{% static 'images/logo.png' %}" width="80" alt="Logo">
+  <br>
+    
+    <h3 class="change-font-family"><strong>Logged out</strong></h3>
+  <p>
+    You have been successfully logged out.
+    You can <a href="{% url 'login' %}">log-in again</a>.
+  </p>
+</div>
+  
+{% endblock %}

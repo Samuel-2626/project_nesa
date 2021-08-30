@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+{% load humanize %}
+
+{% block title %}Answer | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+
+{% block content %}
+
+<div class="container">
+    
+  <h5><strong>Question: </strong>{{ answer.question.title }}  <a href="{% url 'delete-answer-admin' answer.id %}" style="color: crimson;"><i class="material-icons">delete</i></a>
+    <a href="{% url 'message-for-answer' answer.id %}"><i class="material-icons">message</i></a> <a href="{% url 'approve-answer' answer.id %}"><i class="material-icons">check</i></a></h5>
+
+  <div class="question-body">
+    {{ answer.answer|safe }}
+  </div>
+
+  <small>Created: {{ answer.created }}</small> <b>|</b>  
+  <small>Updated: {{ answer.updated }}</small> <b>|</b>
+  <small>Author: {{ answer.author.get_full_name }}</small>
+
+</div>
+
+  
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+
+
+{% load humanize %}
+{% load i18n %}
+{% block title %}
+{% trans "Newsletter unsubscribe" %} |  
+{% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+<div class="container">
+
+   <h1>{% trans "Newsletter unsubscribe" %} {{ newsletter.title }}</h1>
+
+    <p>{% trans "Your unsubscription request has successfully been received. An email has been sent to you with a link you need to follow in order to confirm your unsubscription." %}</p>
+</div>
+
+
+
+{% endblock content %}

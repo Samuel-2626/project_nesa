@@ -1,0 +1,45 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block title %}Message User | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+
+  {% block content %}
+
+
+
+<div class="container">
+
+  {% if sent %}
+      <h3 class="change-font-family">Message successfully sent</h3>
+
+      <a href="{% url 'admin-answer-detail' answer.id %}" class="btn"> Go back</a>
+ 
+    
+    {% else %}
+      <h5><strong>Send Message to: </strong>{{ answer.author.get_full_name }}</h5>
+     <form method="post">
+        {{ message_form|crispy }}
+    
+        {% csrf_token %}
+        <br>
+        <button class="btn" style="width: 100%;">Send E-mail</button>
+      </form>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+
+

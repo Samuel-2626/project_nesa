@@ -1,0 +1,49 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Question | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+
+  {% block content %}
+
+
+
+<div class="container">
+
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/account/dashboard/questions/draft">Go back</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit unpublished question</li>
+    </ol>
+  </nav>
+
+    <h3 class="change-font-family"><strong>Edit Question</strong></h3>
+    <br>
+  <form method="post" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+  {{ question_form.media }}
+ 
+  {{ question_form|crispy }}
+  
+    <br>
+    <div class="text-center">
+  <input type="submit" class="btn" style="width: 100%" value="Save Changes">
+  </div>
+ </form>
+
+</div>
+
+{% endblock %}
+
+
+

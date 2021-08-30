@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% block title %}Delete Profile | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+
+{% block content %}
+
+<div class="container">
+    
+  <h3 class="change-font-family"><strong>Delete Profile</strong></h3>
+  <hr>
+  <p>Before confirming that you would like your profile deleted, we'd like to take a moment to explain the implications of deletion:</p>
+  <ul>
+    <li style="list-style-type: disc;">Deletion is irreversible, and you will have no way to regain any of your original content, should this deletion be carried out and you change your mind later on.</li>
+    <li style="list-style-type: disc;">Your questions, answers and articles will remain on the site, but will be disassociated and anonymized (the author will be listed as "Anonymous User") and will not indicate your authorship even if you later return to the site.</li>
+  </ul>
+  <br>
+  <br>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn">YES, I Agree</button>
+     &laquo; &raquo;
+<a href="{% url 'profile' request.user.id request.user.username %}" class="btn">NO, take me back</a>
+
+</form>
+
+
+  
+{% endblock %}

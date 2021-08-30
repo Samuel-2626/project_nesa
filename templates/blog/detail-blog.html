@@ -1,0 +1,34 @@
+{% extends "_base.html" %}
+{% load humanize %}
+
+
+{% block title %}{{ blog.title }} | {% endblock %}
+
+{% block description %}{{ blog.title }}{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}{{ blog.title }}{% endblock og %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+  <h2>{{ blog.title }}</h2>
+  <small>{{ blog.created|date }} by {{ blog.author.get_full_name }}</small>
+  <br>
+  <br>
+  
+  <div class="question-body">
+    {{ blog.body|safe }}
+  </div>
+  
+ 
+
+</div>
+  
+  
+{% endblock %}
+

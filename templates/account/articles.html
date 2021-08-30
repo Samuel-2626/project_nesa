@@ -1,0 +1,56 @@
+{% extends "_base.html" %}
+{% load humanize %}
+
+{% block title %}My Articles | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+
+<div class="container">
+
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/account/dashboard/">Back to dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">My articles</li>
+    </ol>
+  </nav>
+
+  <h3 class="change-font-family"><strong>My Articles</strong></h3>
+  
+    {% if published_article.count > 0 %}
+
+    <div style="float: right;">
+      <a class="btn btn-color-2" href="/articles/new">Post A New Article</a>
+   </div>
+   <div style="clear: both;">
+
+  </div>
+
+   <br>
+      
+    {% endif %}
+
+    <ul>
+        {% for article in published_article %}
+            <li class="mb-3"><a href="{{ article.get_absolute_url }}">{{ article.title|truncatewords_html:10 }}</a>
+              <a href="{% url 'delete_article' article.id %}" style="color: crimson;"><i class="material-icons">delete</i></a>
+            <a href="{% url 'edit_article' article.id %}"><i class="material-icons">edit</i></a>
+            </li>
+        {% empty %}
+        <p>You don't have any published question. <a href="/articles/new">Post An Article</a></p>
+        {% endfor %}
+    </ul>
+    
+   
+  
+</div>
+
+  
+{% endblock %}

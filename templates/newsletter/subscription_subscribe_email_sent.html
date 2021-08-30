@@ -1,0 +1,30 @@
+{% extends "_base.html" %}
+
+
+{% load humanize %}
+{% load i18n %}
+{% block title %}
+{% trans "Newsletter subscribe" %} |  
+{% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+<div class="container">
+
+   <h1>{% trans "Newsletter subscribe" %} {{ newsletter.title }}</h1>
+
+    <p>{% trans "Your subscription request was successfully received and an activation email has been sent to you. In that email you will find a link which you need to follow in order to activate your subscription." %}</p>
+
+
+</div>
+
+
+
+{% endblock content %}

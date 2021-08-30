@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+    db:
+        image: postgres:11
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+    web:
+        build: .
+        command: gunicorn project_nesa.wsgi -b 0.0.0.0:8000
+        environment:
+            - ENVIRONMENT=development
+            - DEBUG=1
+            - SECRET_KEY=&9c(q6rl%7@@kpa_td^3$dc%5)v6sf2o3p2#sj%tcobjpiv_c)
+        volumes:
+            - .:/code
+        ports:
+            - 8000:8000
+        depends_on:
+            - db
+
+volumes:
+    postgres_data:

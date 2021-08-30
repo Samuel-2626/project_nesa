@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load i18n %}
+{% block title %}
+{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %} |  
+{% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+<div class="container">
+
+  <h1>{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %}</h1>
+
+    <form enctype="multipart/form-data" method="post" action=".">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <p><input id="id_submit" name="submit" value="{% trans "Activate" %}" type="submit" class="btn" /></p>
+    </form>
+</div>
+
+
+
+{% endblock content %}

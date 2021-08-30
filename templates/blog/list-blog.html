@@ -1,0 +1,37 @@
+{% extends "_base.html" %}
+{% load humanize %}
+
+
+{% block title %}Blog | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+
+    {% for blog in blogs %}
+      <h3><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
+      <small>{{ blog.created|date }} by {{ blog.author.get_full_name }}</small>
+      <p>{{ blog.body|truncatewords_html:50|safe }}</p>
+      <hr>
+    {% empty %}
+    <div class="alert alert-warning" role="alert">
+      No Blogs to show
+    </div>
+    {% endfor %}
+  
+     
+
+</div>
+  
+  
+{% endblock %}
+

@@ -1,0 +1,204 @@
+{% extends "_base.html" %}
+{% load humanize %}
+
+{% block title %}Dashboard | {% endblock %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+
+<div class="container">
+    
+    <h2 class="change-font-family"><strong>My Dashboard</strong></h2>
+    <hr class="my-4">
+    <br>
+    {% if user.is_superuser %}
+
+    <h5 class="change-font-family">Drafted Questions</h5>
+    <hr>
+    <ul>
+    {% for question in questions %}
+      <li style="list-style-type: decimal;"><a href="/account/dashboard/question/{{ question.id }}">{{ question.title }}</a></li>
+    {% empty %}
+      <p>There are no pending drafted questions</p>
+    {% endfor %}
+  </ul>
+
+
+  <h5 class="change-font-family">Drafted Answers</h5>
+  <hr>
+    <ul>
+    {% for answer in answers %}
+      <li style="list-style-type: decimal;"><a href="/account/dashboard/answer/{{ answer.id }}">{{ answer.answer|safe|truncatewords:30 }}</a></li>
+    {% empty %}
+      <p>There are no pending drafted answers</p>
+    {% endfor %}
+  </ul>
+
+ 
+  <a href="{% url 'empty-notification' %}" class="btn">Empty Notification of Users</a>
+  <hr>
+
+
+    {% else %}
+    <div class="row">
+      <div class="col-sm-6 mb-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title change-font-family"><strong>Total Questions</strong></h5>
+       
+            
+            <p class="card-text">
+               <p class="total">
+                   <button type="button" class="btn" style="cursor:default">
+       <span class="badge"> {{ user.my_questions.count }}</span>
+    
+    </button>
+                  
+                   
+                   </p>
+                <br>
+                We encourage you to keep asking quality econs related questions.</p>
+            <a href="{% url 'questions' %}" class="btn">See All Questions</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-sm-6 mb-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title change-font-family"><strong>Total Answers</strong></h5>
+            <p class="card-text">
+                <p class="total">
+                    <button type="button" class="btn" style="cursor:default">
+       <span class="badge"> {{ user.my_answers.count }}</span>
+    
+    </button>
+                 
+                    
+                    </p>
+                <br>
+                We encourage you to keep providing quality answers to people's questions.</p>
+            <a href="{% url 'answers' %}" class="btn">See All Answers</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 mb-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title change-font-family"><strong>Total Article</strong></h5>
+            <p class="card-text">
+                <p class="total">
+                  
+                  
+                    <button type="button" class="btn" style="cursor:default">
+       <span class="badge"> {{ user.article_posts.count }}</span>
+    
+    </button>
+                 
+                    
+                    </p>
+                <br>
+                {% if user.article_posts.count > 0 %}
+
+                We encourage you to keep posting quality articles</p>
+            <a href="{% url 'articles' %}" class="btn">See All Articles</a>
+                  
+                {% else %}
+
+                Do you have passion for technical writing on economic issues?</p>
+                {% if user.profile.reputation > 99 %}
+                <a href="{% url 'articles:post_article' %}" class="btn">Start Here</a>
+                  {% else %}
+                  <a href="" class="btn disabled">You need 100 reputation to access</a>
+                  {% endif %}
+                  
+                {% endif %}
+                
+                
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 mb-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title change-font-family"><strong>Followed Questions</strong></h5>
+            <p class="card-text">
+                <p class="total">
+                  
+                  
+                    <button type="button" class="btn" style="cursor:default">
+       <span class="badge"> {{ user.my_follow_question.count }}</span>
+    
+    </button>
+
+    
+                 
+                    
+                    </p>
+                    <br>
+             
+
+                You must really find this questions informative</p>
+            <a href="{% url 'followed-questions' %}" class="btn">Check Them Out</a>
+                  
+                              
+                
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 mb-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title change-font-family"><strong>Liked Articles</strong></h5>
+            <p class="card-text">
+                <p class="total">
+                  
+                  
+                    <button type="button" class="btn" style="cursor:default">
+       <span class="badge"> {{ liked_articles.count }}</span>
+    
+    </button>
+
+    
+                 
+                    
+                    </p>
+                    <br>
+             
+
+                You must really find this articles interesting</p>
+            <a href="{% url 'liked-articles' %}" class="btn">Check Them Out</a>
+                  
+                              
+                
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+   
+      
+    
+    
+    
+    {% endif %}
+    
+   
+</div>
+
+  
+{% endblock %}
