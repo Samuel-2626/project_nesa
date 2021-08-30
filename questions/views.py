@@ -48,12 +48,6 @@ def ask_question(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     # set new question to none
     new_question = None
 
@@ -152,7 +146,6 @@ def ask_question(request):
         'question_form': question_form,
         'new_question': new_question,
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 
@@ -170,12 +163,6 @@ def question_search(request):
                 user=request.user).count
     else:
         total_notifications = None
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     query = None
     results = []
@@ -195,7 +182,6 @@ def question_search(request):
 
         'total_notifications': total_notifications,
 
-        'auth0User': auth0user,
     })
 
 
@@ -218,12 +204,6 @@ def question_list(request, tag_slug=None):
         user = User.objects.get(pk=request.user.pk)
     except:
         user = None
-
-    get_user_profile = request.user
-    try:
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     object_list = Question.published.all()
     total = Question.published.all().count
@@ -249,7 +229,6 @@ def question_list(request, tag_slug=None):
         'tag': tag,
         'total': total,
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 
@@ -273,12 +252,6 @@ def question_list_top(request, tag_slug=None):
     except:
         user = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     object_list = Question.published.all().order_by('-counter')
     total = Question.published.all().count
     tag = None
@@ -301,7 +274,6 @@ def question_list_top(request, tag_slug=None):
         'total': total,
         'total_notifications': total_notifications,
         'user': user,
-        'auth0User': auth0user,
     })
 
 
@@ -325,12 +297,6 @@ def question_list_top_views(request, tag_slug=None):
     except:
         user = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     object_list = Question.published.all().order_by('-views')
     total = Question.published.all().count
     tag = None
@@ -353,7 +319,6 @@ def question_list_top_views(request, tag_slug=None):
         'total': total,
         'total_notifications': total_notifications,
         'user': user,
-        'auth0User': auth0user,
     })
 
 
@@ -377,19 +342,6 @@ def question_detail(request, slug):
     hostname = socket.gethostname()
 
     ip_address = socket.gethostbyname(hostname)
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
-    try:
-        get_user_question_profile = question.author
-        auth0userQuestionProfile = get_user_question_profile.social_auth.get(
-            provider='auth0')
-    except:
-        auth0userQuestionProfile = None
 
     try:
         new_view = QuestionViews(
@@ -510,8 +462,6 @@ def question_detail(request, slug):
         'similar_questions': similar_questions,
         'user': user,
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
-        'auth0userQuestionProfile': auth0userQuestionProfile,
     })
 
 
@@ -532,12 +482,6 @@ def edit_question(request, slug):
         total_notifications = None
 
     item = Question.objects.get(slug=slug, status='published')
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if item.author != request.user:
         messages.success(
@@ -580,7 +524,6 @@ def edit_question(request, slug):
         'question_form': question_form,
         'total_notifications': total_notifications,
         'item': item,
-        'auth0User': auth0user,
     })
 
 
@@ -601,12 +544,6 @@ def delete_question(request, slug):
         total_notifications = None
 
     item = Question.objects.get(slug=slug, status='published')
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     total_answers = item.answers.count()
 
@@ -649,7 +586,6 @@ def delete_question(request, slug):
         'item': item,
 
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 
@@ -672,12 +608,6 @@ def edit_answer(request, id, slug):
     answer = Answer.objects.get(pk=id, status='published')
     question = Question.objects.get(slug=slug, status='published')
     slug = question.slug
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if request.user.profile.reputation < 49:
         messages.success(request, '<strong>Access Denied:</strong> Only people with over 50 reputation can edit an answer <a href="https://nesaacademy.herokuapp.com/help/#editing-a-question-or-answer" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
@@ -721,7 +651,6 @@ def edit_answer(request, id, slug):
         'answer': answer,
         'total_notifications': total_notifications,
         'question': question,
-        'auth0User': auth0user,
     })
 
 
@@ -743,12 +672,6 @@ def delete_answer(request, id, slug):
 
     answer = Answer.objects.get(pk=id)
     question = Question.objects.get(slug=slug)
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if answer.author != request.user:
         messages.success(
@@ -790,7 +713,6 @@ def delete_answer(request, id, slug):
         'answer': answer,
         'total_notifications': total_notifications,
         'question': question,
-        'auth0User': auth0user,
     })
 
 
@@ -808,12 +730,6 @@ def question_share(request, question_slug):
                 user=request.user).count
     else:
         total_notifications = None
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     # Retrieve post by id
     question = get_object_or_404(
@@ -842,7 +758,6 @@ def question_share(request, question_slug):
         'form': form,
         'sent': sent,
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 

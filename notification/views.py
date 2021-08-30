@@ -22,12 +22,6 @@ from datetime import timedelta
 @login_required
 def show_notification(request):
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     object_list = Notification.objects.filter(user=request.user)
 
     try:
@@ -54,8 +48,6 @@ def show_notification(request):
         notifications = paginator.page(paginator.num_pages)
 
     return render(request, 'notification/my-notification.html', {
-
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
         'notifications': notifications,
         'observer': observer,

@@ -32,12 +32,6 @@ from .serializers import PostLikesOrDislikesSerializer
 
 def post_list(request, tag_slug=None):
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     if request.user.id != None:
 
         try:
@@ -74,17 +68,10 @@ def post_list(request, tag_slug=None):
                   'tag': tag,
 
                   'total_notifications': total_notifications,
-                  'auth0User': auth0user,
                   })
 
 
 def post_detail(request, year, month, day, post):
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if request.user.id != None:
 
@@ -153,17 +140,10 @@ def post_detail(request, year, month, day, post):
         'similar_posts': similar_posts,
 
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 
 def post_share(request, post_id):
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if request.user.id != None:
 
@@ -204,18 +184,11 @@ def post_share(request, post_id):
         'sent': sent,
 
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 
 @login_required
 def post_article(request):
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if request.user.id != None:
 
@@ -284,7 +257,6 @@ def post_article(request):
         'post_form': post_form,
 
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 
@@ -306,12 +278,6 @@ def edit_comment(request, id, slug):
 
     comment = Comment.objects.get(id=id)
     post = Article.objects.get(slug=slug)
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if comment.author != request.user:
         messages.success(
@@ -338,7 +304,6 @@ def edit_comment(request, id, slug):
         'total_notifications': total_notifications,
         'comment': comment,
         'post': post,
-        'auth0User': auth0user,
     })
 
 
@@ -361,12 +326,6 @@ def delete_comment(request, id, slug):
     comment = Comment.objects.get(id=id)
     post = Article.objects.get(slug=slug)
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     if comment.author != request.user:
         messages.success(
             request, '<strong>Access Denied:</strong> You are not the author of this comment', extra_tags='safe')
@@ -387,19 +346,11 @@ def delete_comment(request, id, slug):
 
         'total_notifications': total_notifications,
         'post': post,
-        'auth0User': auth0user,
-
 
     })
 
 
 def article_search(request):
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if request.user.id != None:
 
@@ -432,7 +383,6 @@ def article_search(request):
 
 
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 

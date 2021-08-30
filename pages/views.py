@@ -39,14 +39,6 @@ def home(request):
     else:
         total_notifications = None
 
-    get_user_profile = request.user
-
-    try:
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-
-    except:
-        auth0user = None
-
     if request.method == 'GET':
         form = ContactForm()
 
@@ -71,7 +63,6 @@ def home(request):
         'form': form,
 
         'total_notifications': total_notifications,
-        'auth0User': auth0user,
     })
 
 
@@ -90,14 +81,7 @@ def successView(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, "pages/email-success.html", {
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -117,14 +101,7 @@ def CodeOfConduct(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, "pages/code-of-conduct.html", {
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -144,12 +121,6 @@ def Users(request):
                 user=request.user).count
     else:
         total_notifications = None
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     total_users = User.objects.filter(is_active=True).count
 
@@ -179,8 +150,6 @@ def Users(request):
         'users': users,
         'total_users': total_users,
 
-        'auth0User': auth0user,
-
         'user_query': user_query,
         'page': page,
         'total_notifications': total_notifications,
@@ -203,14 +172,8 @@ def Help(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, "pages/help.html", {
-        'auth0User': auth0user,
+
         'total_notifications': total_notifications,
     })
 
@@ -230,14 +193,7 @@ def Privacy(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, "pages/privacy.html", {
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -257,14 +213,7 @@ def Faq(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, "pages/faq.html", {
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
 
     })
@@ -285,14 +234,7 @@ def Terms(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, "pages/terms.html", {
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -312,13 +254,7 @@ def Gpa(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, "pages/gpa.html", {
-        'auth0User': auth0user,
+
         'total_notifications': total_notifications,
     })

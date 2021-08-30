@@ -303,7 +303,7 @@
   
     <div class="row">
       <div class="col-12 col-lg-8 mb-5">
-        <h2 class="change-font-family">{{ question.title }}   {% if request.user.username == question.author.username %}
+        <h2>{{ question.title }}   {% if request.user.username == question.author.username %}
           <a href="{% url 'questions:delete_question' question.slug %}" style="color: crimson;"><i class="material-icons">delete</i></a>
             <a href="{% url 'questions:edit_question' question.slug %}"><i class="material-icons">edit</i></a>
           {% endif %}</h2>
@@ -355,27 +355,18 @@
         
         <br>
         <div class="row">
-           <div class="col-6 col-lg-6">
-       
-            <a href="" id="share">Share</a> <b>|</b>
-            <a href="" id="follow"></a>
-          </div>
-          <div class="col-6 col-lg-6 mb-5">
-           <strong class="change-font-family">Asked by: </strong>{% if question.author %} 
+          <div class="col-6 col-lg-6">
+      
+           <a href="" id="share">Share</a> <b>|</b>
+           <a href="" id="follow"></a>
+         </div>
+         <div class="col-6 col-lg-6 mb-5">
+          <strong>Asked by: </strong>{% if question.author %} <img src="{{ question.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}"> {% endif %}
+           <small>{% if question.author %}<a href="{% url 'profile' question.author.id question.author.username %}">{{ question.author.get_full_name }}</a>{% else %} <a href='https://rocky-atoll-47450.herokuapp.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ question.created }} </small>
            
-           {% if question.author.profile.photo %}
-                    <img src="{{ question.author.profile.get_photo_url }}" alt="" class="img-config">
-                  {% else %}
-                    <img src="{{ auth0userQuestionProfile.extra_data.picture }}" class="img-config" />
-                  {% endif %}
            
-           <!-- <img src="{{ question.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}">  -->
-           {% endif %}
-            <small>{% if question.author %}<a href="{% url 'profile' question.author.id question.author.username %}">{{ question.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.herokuapp.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ question.created }} </small>
-            
-            
-        </div>
-        </div>
+       </div>
+       </div>
         
 
           <hr>
@@ -434,13 +425,6 @@
               <div class="col-6 col-lg-6 mb-5">
                <strong class="change-font-family">Answered by: </strong>
                {% if answer.author %} 
-
-               <!-- {% if answer.author.profile.photo %}
-                    <img src="{{ answer.author.profile.get_photo_url }}" alt="" class="img-config">
-                  {% else %}
-                    <img src="{{ auth0userAnswerProfile.extra_data.picture }}" class="img-config" />
-                  {% endif %} -->
-               
                
                <img src="{{ answer.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}"> {% endif %}
                 <small>{% if answer.author %}<a href="{% url 'profile' answer.author.id answer.author.username %}">{{ answer.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.herokuapp.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ answer.created|timesince }} ago </small>

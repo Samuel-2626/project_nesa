@@ -97,12 +97,7 @@
                     </ul>
                   </div>
                   <div>
-                  {% if request.user.profile.photo %}
                     <img src="{{ request.user.profile.get_photo_url }}" alt="" width="40" height="40" style="border-radius: 50%; margin-right: 15px;">
-                  {% else %}
-                    <img class="avatar" src="{{ auth0User.extra_data.picture }}" width="40" height="40" style="border-radius: 50%; margin-right: 15px;" />
-                  {% endif %}
-                    
                   </div>
                   <div>
                     <a href="{% url "logout" %}" class="btn" style="height: 40px;">Logout</a>

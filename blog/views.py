@@ -29,19 +29,11 @@ def list_blog(request):
 
     blogs = Blog.objects.all()
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, 'blog/list-blog.html', {
 
         'total_notifications': total_notifications,
 
         'blogs': blogs,
-        'auth0User': auth0user,
-
 
     })
 
@@ -63,18 +55,10 @@ def detail_blog(request, slug):
 
     blog = get_object_or_404(Blog, slug=slug)
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     return render(request, 'blog/detail-blog.html', {
 
         'total_notifications': total_notifications,
 
         'blog': blog,
-
-        'auth0User': auth0user,
 
     })

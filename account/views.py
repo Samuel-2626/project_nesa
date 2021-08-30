@@ -46,11 +46,6 @@ def dashboard(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     user = User.objects.get(id=request.user.id)
     questions = Question.objects.filter(status='draft')
@@ -66,7 +61,6 @@ def dashboard(request):
                       'user': user,
                       'questions': questions,
                       'answers': answers,
-                      'auth0User': auth0user,
                       'total_notifications': total_notifications,
                       'followed_question': followed_question,
                       'liked_articles': liked_articles,
@@ -88,19 +82,12 @@ def liked_articles(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     liked_articles = PostLikesOrDislikes.objects.filter(
         author=request.user, status='like')
 
     return render(request,
                   'account/liked-articles.html', {
-
-                      'auth0User': auth0user,
 
                       'liked_articles': liked_articles,
 
@@ -123,18 +110,11 @@ def followed_questions(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     followed_questions = FollowQuestion.objects.filter(user=request.user)
 
     return render(request,
                   'account/followed-question.html', {
-
-                      'auth0User': auth0user,
 
                       'followed_questions': followed_questions,
 
@@ -158,19 +138,12 @@ def articles(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
+ 
     published_article = Article.objects.filter(
         status='published', author=request.user)
 
     return render(request,
                   'account/articles.html', {
-
-                      'auth0User': auth0user,
 
                       'published_article': published_article,
 
@@ -200,11 +173,6 @@ def delete_article(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if request.method == 'POST':
 
@@ -217,7 +185,6 @@ def delete_article(request, id):
         pass
 
     return render(request, 'account/delete-article.html', {
-        'auth0User': auth0user,
         'article': article,
         'total_notifications': total_notifications,
     })
@@ -245,12 +212,6 @@ def edit_article(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     if request.method == 'POST':
 
         article_form = PostForm(
@@ -270,7 +231,6 @@ def edit_article(request, id):
         article_form = QuestionForm(instance=article)
 
     return render(request, 'account/edit-article.html', {
-        'auth0User': auth0user,
         'article_form': article_form,
         'article': article,
         'total_notifications': total_notifications,
@@ -293,12 +253,6 @@ def questions(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     published_question = Question.objects.filter(
         status='published', author=request.user).count
 
@@ -307,8 +261,6 @@ def questions(request):
 
     return render(request,
                   'account/questions.html', {
-
-                      'auth0User': auth0user,
 
                       'published_question': published_question,
                       'drafted_questions': drafted_questions,
@@ -337,11 +289,6 @@ def published_questions(request):
     total_users = User.objects.filter(is_active=True).count
     total_articles = Article.published.all().count
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     questions = Question.objects.filter(
         author=request.user).filter(status='published')
@@ -355,8 +302,6 @@ def published_questions(request):
 
         'questions': questions,
         'total_notifications': total_notifications,
-
-        'auth0User': auth0user,
 
     })
 
@@ -377,18 +322,11 @@ def draft_questions(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     questions = Question.objects.filter(
         author=request.user).filter(status='draft')
 
     return render(request, 'account/draft-question.html', {
-
-        'auth0User': auth0user,
 
         'questions': questions,
         'total_notifications': total_notifications,
@@ -423,12 +361,6 @@ def delete_draft_questions(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     question = get_object_or_404(Question, pk=id)
 
     if request.method == 'POST':
@@ -442,7 +374,6 @@ def delete_draft_questions(request, id):
         pass
 
     return render(request, 'account/delete-draft-question.html', {
-        'auth0User': auth0user,
         'question': question,
         'total_notifications': total_notifications,
     })
@@ -475,12 +406,6 @@ def edit_draft_questions(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     if request.method == 'POST':
 
         question_form = QuestionForm(data=request.POST, instance=question)
@@ -499,7 +424,6 @@ def edit_draft_questions(request, id):
         question_form = QuestionForm(instance=question)
 
     return render(request, 'account/edit-draft-question.html', {
-        'auth0User': auth0user,
         'question_form': question_form,
         'total_notifications': total_notifications,
     })
@@ -521,12 +445,6 @@ def answers(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     published_answers = Answer.objects.filter(
         status='published', author=request.user).count
 
@@ -535,8 +453,6 @@ def answers(request):
 
     return render(request,
                   'account/answers.html', {
-
-                      'auth0User': auth0user,
                       'published_answers': published_answers,
                       'drafted_answers': drafted_answers,
                       'total_notifications': total_notifications,
@@ -560,18 +476,11 @@ def published_answers(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     answers = Answer.objects.filter(
         author=request.user).filter(status='published')
 
     return render(request, 'account/published-answers.html', {
-
-        'auth0User': auth0user,
 
         'answers': answers,
         'total_notifications': total_notifications,
@@ -595,17 +504,10 @@ def draft_answers(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     answers = Answer.objects.filter(author=request.user).filter(status='draft')
 
     return render(request, 'account/draft-answers.html', {
-
-        'auth0User': auth0user,
 
         'answers': answers,
         'total_notifications': total_notifications,
@@ -640,11 +542,6 @@ def delete_draft_answers(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if request.method == 'POST':
 
@@ -657,7 +554,6 @@ def delete_draft_answers(request, id):
         pass
 
     return render(request, 'account/delete-draft-answer.html', {
-        'auth0User': auth0user,
         'answer': answer,
         'total_notifications': total_notifications,
     })
@@ -690,12 +586,6 @@ def edit_draft_answers(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     if request.method == 'POST':
 
         answer_form = AnswerForm(data=request.POST, instance=answer)
@@ -714,7 +604,6 @@ def edit_draft_answers(request, id):
         answer_form = AnswerForm(instance=answer)
 
     return render(request, 'account/edit-draft-answer.html', {
-        'auth0User': auth0user,
         'answer_form': answer_form,
         'total_notifications': total_notifications,
     })
@@ -735,12 +624,6 @@ def show_profile(request, id, username):
                 user=request.user).count
     else:
         total_notifications = None
-
-    try:
-        get_user_profile = User.objects.get(pk=id, username=username)
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     hostname = socket.gethostname()
 
@@ -780,8 +663,6 @@ def show_profile(request, id, username):
         'top_questions': top_questions,
         'top_answers': top_answers,
         'top_articles': top_articles,
-
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
 
     })
@@ -804,11 +685,6 @@ def update_profile(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     if request.method == 'POST':
         profile_form = ProfileForm(
@@ -823,7 +699,6 @@ def update_profile(request):
         profile_form = ProfileForm(instance=request.user.profile)
     return render(request, 'account/edit.html', {
         'profile_form': profile_form,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -845,12 +720,7 @@ def delete_profile(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
+ 
     user = User.objects.get(username=request.user.username)
 
     if request.method == 'POST':
@@ -864,7 +734,6 @@ def delete_profile(request):
         pass
 
     return render(request, 'account/delete-user.html', {
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -886,17 +755,10 @@ def question_detail(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     question = get_object_or_404(Question, pk=id)
 
     return render(request, 'account/question-detail.html', {
         'question': question,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -917,12 +779,6 @@ def approve_question(request, id):
                 user=request.user).count
     else:
         total_notifications = None
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     question = get_object_or_404(Question, pk=id)
 
@@ -956,7 +812,6 @@ def approve_question(request, id):
 
     return render(request, 'account/approve-question.html', {
         'question': question,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -978,11 +833,6 @@ def message(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     question = get_object_or_404(Question, pk=id)
 
@@ -1019,7 +869,6 @@ def message(request, id):
         'sent': sent,
         'message_form': message_form,
         'question': question,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -1040,12 +889,6 @@ def delete(request, id):
                 user=request.user).count
     else:
         total_notifications = None
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     question = get_object_or_404(Question, pk=id)
 
@@ -1081,7 +924,6 @@ def delete(request, id):
 
     return render(request, 'account/delete.html', {
         'question': question,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -1103,17 +945,11 @@ def answer_detail(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     answer = get_object_or_404(Answer, pk=id)
 
     return render(request, 'account/answer.html', {
         'answer': answer,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -1134,12 +970,6 @@ def approve_answer(request, id):
                 user=request.user).count
     else:
         total_notifications = None
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     answer = get_object_or_404(Answer, pk=id)
 
@@ -1203,7 +1033,6 @@ def approve_answer(request, id):
 
     return render(request, 'account/approve-answer.html', {
         'answer': answer,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -1225,12 +1054,7 @@ def message_for_answer(request, id):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
+ 
     answer = get_object_or_404(Answer, pk=id)
 
     sent = False
@@ -1266,7 +1090,6 @@ def message_for_answer(request, id):
         'sent': sent,
         'message_form': message_form,
         'answer': answer,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -1287,12 +1110,6 @@ def delete_answer(request, id):
                 user=request.user).count
     else:
         total_notifications = None
-
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
 
     answer = get_object_or_404(Answer, pk=id)
 
@@ -1328,7 +1145,6 @@ def delete_answer(request, id):
 
     return render(request, 'account/delete-answer.html', {
         'answer': answer,
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })
 
@@ -1350,12 +1166,6 @@ def empty_notification(request):
     else:
         total_notifications = None
 
-    try:
-        get_user_profile = request.user
-        auth0user = get_user_profile.social_auth.get(provider='auth0')
-    except:
-        auth0user = None
-
     current_date = timezone.now()
     date_less_30 = timedelta(30)
 
@@ -1376,6 +1186,5 @@ def empty_notification(request):
 
     return render(request, 'account/empty-notification.html', {
 
-        'auth0User': auth0user,
         'total_notifications': total_notifications,
     })

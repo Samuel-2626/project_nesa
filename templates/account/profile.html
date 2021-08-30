@@ -24,24 +24,12 @@
 
       <div class="col-12 col-md-6 col-lg-4 mb-4 text-center">
         <div style="background-color: #DDAF94; border-radius: 30px;" class="pt-2">
-            {% if user.profile.photo %}
-            <a target="_blank" href="{{ user.profile.get_photo_url }}">
-              <img src="{{ user.profile.get_photo_url }}" class="img-config-2" alt="{{ user.get_full_name }}"> 
-              </a>
-            {% elif user.get_full_name %}
-
-              <img class="img-config-2" src="{{ auth0User.extra_data.picture }}" /> 
-      
-            {% else %}
-            <a target="_blank" href="{{ user.profile.get_photo_url }}">
-              <img src="{{ user.profile.get_photo_url }}" class="img-config2" alt="{{ user.get_full_name }}"> 
-              </a>
-          
-            {% endif %}
-
+          <a target="_blank" href="{{ user.profile.get_photo_url }}">
+            <img src="{{ user.profile.get_photo_url }}" class="img-config-2" alt="{{ user.get_full_name }}"> 
+            </a>
             <br>
             <br>
-            <p class="change-font-family"><big><strong>{{ user.profile.reputation|intcomma }}</strong></big> REPUTATION</p>
+            <p><big><strong>{{ user.profile.reputation|intcomma }}</strong></big> REPUTATION</p>
         </div>
         <div class="mt-4 text-left">
 
@@ -145,7 +133,7 @@
 
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
-        <h5 class="change-font-family"><strong>Top Questions</strong></h5>
+        <h5><strong>Top Questions</strong></h5>
         <ul>
           {% for top_question in top_questions %}
             <li style="list-style-type: disc;"><a href="{{ top_question.get_absolute_url }}">{{ top_question.title|truncatewords:15 }}</a></li>
@@ -156,7 +144,7 @@
         
       </div>
       <div class="col-12 col-md-6 col-lg-4">
-        <h5 class="change-font-family"><strong>Top Answers</strong></h5>
+        <h5><strong>Top Answers</strong></h5>
         <ul>
           {% for top_answer in top_answers %}
             <li style="list-style-type: disc;"><a href="{{ top_answer.question.get_absolute_url }}">{{ top_answer.answer|truncatewords:15|safe }}</a></li>
@@ -167,7 +155,7 @@
         </ul>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
-        <h5 class="change-font-family"><strong>Top Articles</strong></h5>
+        <h5><strong>Top Articles</strong></h5>
         <ul>
           {% for top_article in top_articles %}
             <li style="list-style-type: disc;"><a href="{{ top_article.get_absolute_url }}">{{ top_article.title|truncatewords:15 }}</a></li>
