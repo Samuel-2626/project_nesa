@@ -17,6 +17,15 @@ services:
             - ENVIRONMENT=development
             - DEBUG=1
             - SECRET_KEY=&9c(q6rl%7@@kpa_td^3$dc%5)v6sf2o3p2#sj%tcobjpiv_c)
+            - EMAIL_HOST_USER=fuudfhuihsdiui
+            - EMAIL_HOST_PASSWORD=rwiwuhekas
+            - DEFAULT_FROM_EMAIL=rwriuhsdahnksia
+            - AWS_ACCESS_KEY_ID=wejwnedilias
+            - AWS_SECRET_ACCESS_KEY=wiriwediodo
+            - AWS_STORAGE_BUCKET_NAME=weuiwdihnodja
+            - AWS_S3_REGION_NAME=weiwehjwlia
+            - SOCIAL_AUTH_AUTH0_KEY=weiwodhaisah
+            - SOCIAL_AUTH_AUTH0_SECRET=weiwohjwaosidh
         volumes:
             - .:/code
         ports:

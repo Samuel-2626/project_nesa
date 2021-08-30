@@ -168,24 +168,25 @@ if DEBUG:
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''  # past the key or password app here
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    # past the key or password app here
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
 
-DEFAULT_FROM_EMAIL = ''
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 
 if DEBUG:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 else:
-    AWS_ACCESS_KEY_ID = ''
-    AWS_SECRET_ACCESS_KEY = ''
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_STORAGE_BUCKET_NAME = ''
-    AWS_S3_REGION_NAME = ''
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     AWS_DEFAULT_ACL = None
@@ -304,8 +305,8 @@ NEWSLETTER_CONFIRM_EMAIL = True
 
 # SOCIAL AUTH AUTH0 BACKEND CONFIG
 SOCIAL_AUTH_TRAILING_SLASH = False
-SOCIAL_AUTH_AUTH0_KEY = "Z2tTDiBhNvi024qK0bOfQ9sxjZ8JfZJE"
-SOCIAL_AUTH_AUTH0_SECRET = "o4IpH3VEHGJR6JXG1xOeCzPbEoeHj7qcNqir-0ZCQ7fFWnL3LYodrzcgtxJbMIH-"
+SOCIAL_AUTH_AUTH0_KEY = os.environ.get('SOCIAL_AUTH_AUTH0_KEY')
+SOCIAL_AUTH_AUTH0_SECRET = os.environ.get('SOCIAL_AUTH_AUTH0_SECRET')
 
 SOCIAL_AUTH_AUTH0_DOMAIN = "dev-komlz4-3.us.auth0.com"
 SOCIAL_AUTH_AUTH0_SCOPE = [
