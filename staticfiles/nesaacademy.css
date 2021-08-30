@@ -93,7 +93,7 @@ main {
   margin: 15px;
 
   max-width: 600px;
-  height: 220px;
+  max-height: 250px;
   
 }
 
