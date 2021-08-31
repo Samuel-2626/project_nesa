@@ -617,8 +617,14 @@ table th {
   }
 }
 
-
-
 .change-font-family {
   font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.img-change-border {
+  border: 2px solid var(--green);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 100px;
 }
