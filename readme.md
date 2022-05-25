@@ -20,6 +20,26 @@ Nesa Academy authentication was built with [Auth0](https://auth0.com/) and it on
 ![Authentication 2](https://imgur.com/YQSjBPZ.png)
 ![Authentication 3](https://imgur.com/a1liEGO.png)
 
+## Question and Answer
+
+### All Questions
+
+You can see all questions as well as filter by `date`, `votes`, and `views`.
+
+![Question 1](https://imgur.com/YsfsQNO.png)
+
+You can also follow or unfollow question, if you're not the one that created the question.
+
+![Question 2](https://imgur.com/Vmhg22C.png)
+
+You can also edit or deleted question you created.
+
+![Question 3](https://imgur.com/vXltq4o.png)
+![Question 4](https://imgur.com/azCj53i.png)
+
+> However, since this web app mirrors Stack Overflow, you must have certain level of reputation before you can edit, delete question and perform other actions. Checkout the [help center](https://nesaacademy.herokuapp.com/help/) to learn more.
+
+
 
 
 
