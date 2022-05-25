@@ -49,11 +49,11 @@ You can ask a question on Nesa Academy, and based on your reputation it can eith
 
 Things start getting interesting when you view a single question, as you can see when it was asked, how many times it was viewed, and how many answers it as. You can also `share`, `follow`, `upvote`, and `downvote` a question. While if there are related questions, it will also be visible here.
 
-![Question 6](https://imgur.com/QwgsthC.png)
+![Question 6](https://imgur.com/WKaDgAo.png)
 
 Futhermore, you can answer a particular question, just once as well as `upvote`, `downvote`, `edit`, and `delete` answer. You can also `accept` a particular answer if you deemed it to be the most suitable for your particular question: a `green check mark` will be visible on accepted answers.
 
-![Question 7](https://imgur.com/uZLF9fV.png)
+![Question 7](https://imgur.com/cJpzRez.png)
 
 
 
