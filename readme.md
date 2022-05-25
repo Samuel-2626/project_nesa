@@ -1,5 +1,7 @@
 # Welcome to Nesa Academy
 
+![Homepage](https://imgur.com/r7UZJb6.png)
+
 A question and answer platform, similar with Stack Overflow: built with Python and JavaScript. The Tech Stack is as follows:
 
 1. Django 
@@ -10,7 +12,7 @@ A question and answer platform, similar with Stack Overflow: built with Python a
 
 This site is hosted on Heroku: which you can find [here](https://nesaacademy.herokuapp.com/). 
 
-Here is the homepage.
 
-![Homepage](https://imgur.com/r7UZJb6.png)
+
+
 
