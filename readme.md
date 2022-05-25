@@ -108,6 +108,12 @@ Finally, you can view articles, add your own articles, like or dislike an articl
 
 ![Article 3](https://imgur.com/Ke0G1yd.png)
 
+## Mobile Responsiveness
+
+This application is also mobile friendly.
+
+![Mobile 1](https://imgur.com/j2hGLqW.png)
+
 
 
 
