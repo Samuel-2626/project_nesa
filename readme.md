@@ -12,6 +12,8 @@ A question and answer platform, similar with [Stack Overflow](https://stackoverf
 
 This site is hosted on Heroku: which you can find [here](https://nesaacademy.herokuapp.com/). Here are the basic features.
 
+-------
+
 ## Authentication
 
 Nesa Academy authentication was built with [Auth0](https://auth0.com/) and it only allows social authentication with a Google account.
@@ -19,6 +21,8 @@ Nesa Academy authentication was built with [Auth0](https://auth0.com/) and it on
 ![Authentication 1](https://imgur.com/y3x7fLN.png)
 ![Authentication 2](https://imgur.com/YQSjBPZ.png)
 ![Authentication 3](https://imgur.com/a1liEGO.png)
+
+-------
 
 ## Question and Answer
 
@@ -61,6 +65,8 @@ You can also search for a particular question. Full-text search was implemented 
 
 ![Question 8](https://imgur.com/v0VqJyo.png)
 
+-------
+
 
 ## Users
 
@@ -69,6 +75,8 @@ You can see other users on the site, as well as view their profile.
 ![Users 1](https://imgur.com/Q2uRbZu.png)
 
 ![Users 2](https://imgur.com/pKny0fZ.png)
+
+-------
 
 
 ## Dashboard
@@ -97,6 +105,8 @@ As well as to message a particular user.
 
 ![Dashboard 6](https://imgur.com/YiUMPEp.png)
 
+-------
+
 
 ## Article
 
@@ -107,6 +117,8 @@ Finally, you can view articles, add your own articles, like or dislike an articl
 ![Article 2](https://imgur.com/gH95KqN.png)
 
 ![Article 3](https://imgur.com/Ke0G1yd.png)
+
+-------
 
 ## Mobile Responsiveness
 
