@@ -12,5 +12,5 @@ This site is hosted on Heroku: which you can find [here](https://nesaacademy.her
 
 Here is the homepage.
 
-![https://imgur.com/r7UZJb6.png]
+![Homepage](https://imgur.com/r7UZJb6.png)
 
