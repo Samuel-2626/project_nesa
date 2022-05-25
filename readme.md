@@ -28,11 +28,11 @@ You can see all questions as well as filter by `date`, `votes`, and `views`.
 
 ![Question 1](https://imgur.com/YsfsQNO.png)
 
-You can also follow or unfollow question, if you're not the one that created the question.
+You can also follow or unfollow question, if you're not the person that created the question.
 
 ![Question 2](https://imgur.com/Vmhg22C.png)
 
-You can also edit or deleted question you created.
+You can also edit or delete question you posted.
 
 ![Question 3](https://imgur.com/vXltq4o.png)
 ![Question 4](https://imgur.com/azCj53i.png)
