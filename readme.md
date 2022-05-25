@@ -39,6 +39,22 @@ You can also edit or delete question you posted.
 
 > However, since this web app mirrors Stack Overflow, you must have certain level of reputation before you can edit, delete question and perform other actions. Checkout the [help center](https://nesaacademy.herokuapp.com/help/) to learn more.
 
+### Asking a Question
+
+You can ask a question on Nesa Academy, and based on your reputation it can either be submitted as draft or published immediately.
+
+![Question 5](https://imgur.com/n6N5azG.png)
+
+### A Single Question
+
+Things start getting interesting when you view a single question, as you can see when it was asked, how many times it was viewed, and how many answers it as. You can also `share`, `follow`, `upvote`, and `downvote` a question. While if there are related questions, it will also be visible here.
+
+![Question 6](https://imgur.com/QwgsthC.png)
+
+Futhermore, you can answer a particular question, just once as well as upvote, downvote, edit, and delete answer. You can also accept a particular answer if you deemed it to be the most suitable for your particular question: a green check mark will be visible on accepted answers.
+
+![Question 7](https://imgur.com/uZLF9fV.png)
+
 
 
 
