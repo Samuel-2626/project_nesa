@@ -114,6 +114,10 @@ This application is also mobile friendly.
 
 ![Mobile 1](https://imgur.com/j2hGLqW.png)
 
+--
+
+Checkout [this post](https://devsam.hashnode.dev/introducing-nesa-academy) to read more.
+
 
 
 
