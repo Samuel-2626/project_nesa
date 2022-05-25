@@ -55,6 +55,58 @@ Futhermore, you can answer a particular question, just once as well as `upvote`,
 
 ![Question 7](https://imgur.com/cJpzRez.png)
 
+### Search Question 
+
+You can also search for a particular question. Full-text search was implemented here. 
+
+![Question 8](https://imgur.com/Ny2Qg8m.png)
+
+
+## Users
+
+You can see other users on the site, as well as view their profile.
+
+![Users 1](https://imgur.com/Q2uRbZu.png)
+
+![Users 2](https://imgur.com/pKny0fZ.png)
+
+
+## Dashboard
+
+Before you access your dashboard, at the top right corner you have access to your `notification`, `dashboard` and `profile`. Where you can edit or delete your profile.
+
+![Dashboard 1](https://imgur.com/WSxXV5x.png)
+
+### See your notifications
+
+![Dashboard 2](https://imgur.com/OMPlVwX.png)
+
+### View your dashboard
+
+![Dashboard 3](https://imgur.com/6CNTskQ.png)
+
+![Dashboard 4](https://imgur.com/bRPjyi7.png)
+
+### Admin Privilegdes
+
+Superuser's as special advanced feature to accept, delete questions.
+
+![Dashboard 5](https://imgur.com/bb6fqaY.png)
+
+As well as to message a particular user.
+
+![Dashboard 6](https://imgur.com/YiUMPEp.png)
+
+
+## Article
+
+Finally, you can view articles, add your own articles, like or dislike an articles and comment on an article.
+
+![Article 1](https://imgur.com/nXSslXP.png)
+
+![Article 2](https://imgur.com/gH95KqN.png)
+
+![Article 3](https://imgur.com/Ke0G1yd.png)
 
 
 
