@@ -47,11 +47,11 @@ You can ask a question on Nesa Academy, and based on your reputation it can eith
 
 ### A Single Question
 
-Things start getting interesting when you view a single question, as you can see when it was asked, how many times it was viewed, and how many answers it as. You can also `share`, `follow`, `upvote`, and `downvote` a question. While if there are related questions, it will also be visible here.
+Things start getting interesting when you view a single question, as you can see when it was asked, how many times it was viewed, and how many answers it has. You can also `share`, `follow`, `upvote`, and `downvote` a question. While if there are related questions, it will also be visible here.
 
 ![Question 6](https://imgur.com/WKaDgAo.png)
 
-Futhermore, you can answer a particular question, just once as well as `upvote`, `downvote`, `edit`, and `delete` answer. You can also `accept` a particular answer if you deemed it to be the most suitable for your particular question: a `green check mark` will be visible on accepted answers.
+Futhermore, you can answer a particular question just once, as well as `upvote`, `downvote`, `edit`, and `delete` answer. You can also `accept` a particular answer if you deem it to be the most suitable for your particular question: a `green check mark` will be visible on accepted answers.
 
 ![Question 7](https://imgur.com/cJpzRez.png)
 
@@ -59,7 +59,7 @@ Futhermore, you can answer a particular question, just once as well as `upvote`,
 
 You can also search for a particular question. Full-text search was implemented here. 
 
-![Question 8](https://imgur.com/Ny2Qg8m.png)
+![Question 8](https://imgur.com/v0VqJyo.png)
 
 
 ## Users
@@ -89,7 +89,7 @@ Before you access your dashboard, at the top right corner you have access to you
 
 ### Admin Privilegdes
 
-Superuser's as special advanced feature to accept, delete questions.
+Superuser's has special advanced feature: which are to accept, delete questions.
 
 ![Dashboard 5](https://imgur.com/bb6fqaY.png)
 
@@ -100,7 +100,7 @@ As well as to message a particular user.
 
 ## Article
 
-Finally, you can view articles, add your own articles, like or dislike an articles and comment on an article.
+Finally, you can view articles, add your own articles, like or dislike an article and comment on an article.
 
 ![Article 1](https://imgur.com/nXSslXP.png)
 
@@ -114,7 +114,7 @@ This application is also mobile friendly.
 
 ![Mobile 1](https://imgur.com/j2hGLqW.png)
 
---
+-------
 
 Checkout [this post](https://devsam.hashnode.dev/introducing-nesa-academy) to read more.
 
