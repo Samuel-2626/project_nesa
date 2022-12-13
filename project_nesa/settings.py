@@ -1,4 +1,3 @@
-import dj_database_url
 import os
 
 from pathlib import Path
@@ -18,7 +17,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=1))
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['projectnesa-production.up.railway.app',
+                 'www.nesaacademy.com', 'nesaacademy.com', '127.0.0.1']
 
 
 # Application definition
@@ -205,11 +205,6 @@ if ENVIRONMENT == 'production':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
-# Heroku
-
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 TAGGIT_CASE_INSENSITIVE = True
 
