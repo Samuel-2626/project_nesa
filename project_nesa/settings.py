@@ -9,16 +9,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
+ENVIRONMENT = "development"
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = "&9c(q6rl%7@@kpa_td^3$dc%5)v6sg3o3p2#sj%tcobjpiv_cb"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DEBUG', default=1))
+DEBUG = True
 
-ALLOWED_HOSTS = ['projectnesa-production.up.railway.app',
-                 'www.nesaacademy.com', 'nesaacademy.com', '127.0.0.1']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
 
     # Third-party
     'crispy_forms',
+    'crispy_bootstrap4',
     'ckeditor',
     'ckeditor_uploader',
     'social_django',
@@ -58,6 +58,9 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'notification.apps.NotificationConfig',
     'Follow.apps.FollowConfig',
+    'tutorials.apps.TutorialsConfig',
+    'courses.apps.CoursesConfig',
+    'quiz.apps.QuizConfig',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -78,6 +81,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'project_nesa.urls'
@@ -106,12 +110,8 @@ WSGI_APPLICATION = 'project_nesa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5831
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -167,14 +167,14 @@ if DEBUG:
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    # past the key or password app here
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    EMAIL_HOST_USER = ...
+        # past the key or password app here
+    EMAIL_HOST_PASSWORD = ...
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
 
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+DEFAULT_FROM_EMAIL = ...
 
 
 if DEBUG:
@@ -299,10 +299,10 @@ NEWSLETTER_CONFIRM_EMAIL = True
 
 # SOCIAL AUTH AUTH0 BACKEND CONFIG
 SOCIAL_AUTH_TRAILING_SLASH = False
-SOCIAL_AUTH_AUTH0_KEY = os.environ.get('SOCIAL_AUTH_AUTH0_KEY')
-SOCIAL_AUTH_AUTH0_SECRET = os.environ.get('SOCIAL_AUTH_AUTH0_SECRET')
+SOCIAL_AUTH_AUTH0_KEY = ...
+SOCIAL_AUTH_AUTH0_SECRET = ...
 
-SOCIAL_AUTH_AUTH0_DOMAIN = "dev-komlz4-3.us.auth0.com"
+SOCIAL_AUTH_AUTH0_DOMAIN = ...
 SOCIAL_AUTH_AUTH0_SCOPE = [
     'openid',
     'profile',

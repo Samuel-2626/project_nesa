@@ -4,9 +4,9 @@
 
 A question and answer platform, similar with [Stack Overflow](https://stackoverflow.com/), but for economists: built with Python and JavaScript. The Tech Stack is as follows:
 
-1. Django 
-2. Django REST framework 
-3. JavaScript 
+1. Django
+2. Django REST framework
+3. JavaScript
 4. BootStrap5
 5. Auth0
 
@@ -61,12 +61,11 @@ Futhermore, you can answer a particular question just once, as well as `upvote`,
 
 ### Search Question 
 
-You can also search for a particular question. Full-text search was implemented here. 
+You can also search for a particular question. Full-text search was implemented here.
 
 ![Question 8](https://imgur.com/v0VqJyo.png)
 
 -------
-
 
 ## Users
 
@@ -77,7 +76,6 @@ You can see other users on the site, as well as view their profile.
 ![Users 2](https://imgur.com/pKny0fZ.png)
 
 -------
-
 
 ## Dashboard
 
@@ -107,7 +105,6 @@ As well as to message a particular user.
 
 -------
 
-
 ## Article
 
 Finally, you can view articles, add your own articles, like or dislike an article and comment on an article.
@@ -129,7 +126,3 @@ This application is also mobile friendly.
 -------
 
 Checkout [this post](https://devsam.hashnode.dev/introducing-nesa-academy) to read more.
-
-
-
-

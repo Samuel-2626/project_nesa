@@ -1,0 +1,59 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% load humanize %}
+
+{% block title %}Quiz | {% endblock %}
+
+
+{% block description %}A one stop site for everything economics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}A one stop site for everything economics{% endblock og %}
+
+
+
+{% block content %}
+
+
+
+  <div class="container">
+
+  <h2><strong>Top Quiz</strong></h2>
+  <hr class="my-4">
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">Quiz #1</h5>
+        <img src="{% static 'images/history-of-economic-thought.jpg' %}" class="card-img-top" alt="History of Economic thought Quiz" style="height: 220px;">
+        <div class="card-body">
+          <h5 class="card-title">History of Economic Thought</h5>
+          <h6 class="card-subtitle"></h6>
+          <p class="card-text">This quiz would feature multiple questions to test your knowledge of the history of economic thought. Detailed answers and explanations will also be provided.</p>
+          <a href="" class="disabled btn">Comming Soon [June 1st, 2021]</a>
+        </div>
+        <div class="card-footer">
+          from Nesa Academy
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+
+
+{% endblock content %}
+
+{% block script %}
+ <script>
+
+
+  </script>
+{% endblock script %}

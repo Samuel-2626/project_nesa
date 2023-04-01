@@ -16,7 +16,7 @@ services:
         environment:
             - ENVIRONMENT=development
             - DEBUG=1
-            - SECRET_KEY=&9c(q6rl%7@@kpa_td^3$dc%5)v6sg3o3p2#sj%tcobjpiv_c)
+            - SECRET_KEY='test'
             - EMAIL_HOST_USER='test'
             - EMAIL_HOST_PASSWORD='test'
             - DEFAULT_FROM_EMAIL='test'

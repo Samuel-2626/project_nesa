@@ -1,0 +1,46 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Institutions | {% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+{% block content %}
+
+  <div class="container">
+    <h3><strong>Available Universities</strong> 
+      <!-- ({{ institution_count}})  -->
+      &nbsp;<a href="/tutorials/search/"><i class="material-icons" style="color: crimson; font-size:30px; position: relative; top: 7px;">search</i></a></h3>
+    
+    <hr>
+  
+
+    {% for institution in institutions %}
+      <div class="text-center institution">
+        <img src="{{ institution.image.url }}" alt="" width="100">
+        <p class="text-white">{{ institution.name }}</p>
+        <a href="{{ institution.slug }}" class="btn" style="color: #E8CEBF;">Past Questions</a>
+      </div>
+    {% empty %}
+      <p>No Available Institution Yet</p>
+    {% endfor %}
+  
+
+  <div class="paginator">
+    {% include "pagination.html" with page=institutions %}
+  </div>
+
+  
+  </div>
+
+
+
+
+
+{% endblock content %}
+

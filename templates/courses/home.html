@@ -1,0 +1,62 @@
+{% extends "_base.html" %}
+
+{% load static %}
+
+{% load humanize %}
+
+{% block title %}Courses | {% endblock %}
+
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+
+
+
+  <div class="container">
+
+  <h2><strong>Top Courses</strong></h2>
+
+  <hr class="my-4">
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">Analysis of Data and Interpretation of result with SPSS</h5>
+        <img src="{% static 'images/data-analysis.jpg' %}" class="card-img-top" alt="Data Analysis" style="height: 220px;">
+        <div class="card-body">
+          <h5 class="card-title">Complete Guide to your Chapter 4</h5>
+          <h6 class="card-subtitle">with SPSS</h6>
+          <p class="card-text">This course is designed for undergraduate students especially those in their final year to be able to analyse and run their data with SPSS in easy steps.</p>
+          <a href="" class="disabled btn">Comming Soon [June 1st, 2021]</a>
+        </div>
+        <div class="card-footer">
+          from Nesa Academy
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  </div>
+
+
+
+
+{% endblock content %}
+
+{% block script %}
+ <script>
+
+
+  </script>
+{% endblock script %}

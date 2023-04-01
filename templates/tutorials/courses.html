@@ -1,0 +1,107 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Courses | {% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+{% block content %}
+
+<button type="button" id="modal-button11" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal11" style="visibility: hidden; display: none;" >
+  Launch demo modal
+</button>
+
+
+<div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><strong>Ask a question</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    
+            <p>Nesa Academy was created for economics majors and practising economics, <br>
+            to be able to ask questions and receive answers from likeminded people
+            </p>
+         
+      </div>
+
+      <div class="modal-footer">
+        <a class="btn btn-color-2" href="/questions/ask/">Ask Question</a>
+      </div>
+        
+   
+     
+  
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+
+  <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/tutorials/institutions/">All Institutions</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ institution.name }}</li>
+      </ol>
+    </nav>
+
+    <h3><strong>Available Courses</strong> ({{ courses_count }}) <div id="div1" class="fa" style="color: #266150;"></div></h3>
+
+  
+    <hr>
+    <ul class="">
+    {% for course in courses %}
+      
+       <li style="list-style-type: none;" class="pb-3"><a href="{{ course.slug }}"> {{ course }}</a></li>
+
+    
+    {% empty %}
+      <p>No Available Course Yet</p>
+    {% endfor %}
+  </ul>
+
+  
+  
+  </div>
+
+
+
+
+
+{% endblock content %}
+
+{% block script %}
+  <script>
+
+window.onload = (event) => {
+
+  function brakechain() {
+  var a;
+  a = document.getElementById("div1");
+  a.innerHTML = "&#xf0c1;";
+  setTimeout(function () {
+      a.innerHTML = "&#xf127;";
+    }, 1000);
+}
+brakechain();
+setInterval(brakechain, 2000);
+
+
+function myFunction() {
+    document.querySelector('#modal-button11').click()
+}
+
+setTimeout(myFunction, 5000)
+  
+};
+
+   
+  </script>
+{% endblock script %}

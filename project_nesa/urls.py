@@ -4,11 +4,14 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('nesaacademy-admin-panel/', admin.site.urls),
     path('', include('pages.urls')),
     path('auth/', include('auth0login.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('questions/', include('questions.urls')),
+    path('courses/', include('courses.urls')),
+    path('quiz/', include('quiz.urls')),
+    path('tutorials/', include('tutorials.urls')),
     path('articles/', include('articles.urls')),
     path('account/', include('account.urls')),
     path('notification/', include('notification.urls')),

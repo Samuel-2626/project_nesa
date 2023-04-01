@@ -1,0 +1,72 @@
+{% extends "_base.html" %}
+{% load humanize %}
+{% block title %}
+  Search Question |  
+{% endblock title %}
+
+{% block description %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock description %}
+
+{% block keywords %}Economics, Econometrics, Micro economics, Macro economics, Academy, Nesa{% endblock keywords %}
+
+{% block og %}Nesa Academy is a question and answer site for students and enthusiast economists. It features questions and answers on a wide range of topics in Economics, Econometrics and Statistics{% endblock og %}
+
+
+
+{% block content %}
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/tutorials/institutions/">All Institutions</a></li>
+      <li class="breadcrumb-item"><a href="/tutorials/search/">Search Again</a></li>
+      <li class="breadcrumb-item active" aria-current="page">search past questions</li>
+    </ol>
+  </nav>
+  
+    {% if query_tut %}
+      <h3>Past Questions containing "{{ query_tut }}"</h3>  
+      <hr>
+      <h5><strong>
+        {% with results.count as total_results %}
+          Found {{ total_results }} result{{ total_results|pluralize }}
+        {% endwith %}
+      </strong></h5>
+      <br>
+      {% for tutorial in results %}
+
+        <h6><b>Question:</b> <a href="/tutorials/{{ tutorial.id }}">{{ tutorial.question|safe|truncatewords_html:15 }}</a></h6>
+        <h6><b>Answer:</b></h6>
+        {{ tutorial.answer|truncatewords_html:5|safe }}
+        <span style="background-color: white;" class="p-2">
+        <small>{{ tutorial.course.institution }} <b>[{{ tutorial.course.code }}]</b></small>
+          
+          
+        </span>
+        
+        <hr>
+      {% empty %}
+      <div class="alert alert-danger" role="alert">
+        There are no results for your query. <a href="/tutorials/search">Search Again</a>
+      </div>
+        
+      {% endfor %}
+
+    {% else %}
+    <div class="success-jumbotron">
+
+      <br>
+     
+    
+    <form method="get" action="{% url 'tutorial_search' %}" autocomplete="off">
+      <input class="form-control mr-2" name="query_tutorial" type="search" placeholder="Search for Past Questions..." aria-label="Search" required autofocus>
+      </form>
+    </div>
+    
+    {% endif %}
+
+    
+     
+</div>
+
+
+
+{% endblock content %}
