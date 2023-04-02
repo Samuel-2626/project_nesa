@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ENVIRONMENT = "development"
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "&9c(q6rl%7@@kpa_td^3$dc%5)v6sg3o3p2#sj%tcobjpiv_cb"
+SECRET_KEY = ...
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

@@ -23,11 +23,10 @@
     {% if error %}
         <p>{% trans "Due to a technical error we were not able to submit your confirmation email. This could be because your email address is invalid." %}</p>
 
-        {% comment %} Replace the the following dummy with a valid email address and remove this comment.
 
-        <p>{% trans "If the error persists, please don't hesitate to contact us at the following email address:" %} <a href="mailto:info@foobar.com">info@foobar.com</a></p>
+        <p>{% trans "If the error persists, please don't hesitate to contact us at the following email address:" %} <a href="mailto:academynesa@gmail.com">academynesa@gmail.com</a></p>
 
-        {% endcomment %}
+        
     {% else %}
         <form enctype="multipart/form-data" method="post" action=".">
             {% csrf_token %}
