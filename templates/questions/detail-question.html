@@ -76,7 +76,7 @@
         </div>
         <div class="modal-body">
           <p>
-            <small>You need <a href="" style="color: #DDAF94;">15 reputation</a> to upvote question or answer.</small>
+            <small>You need <span href="" style="color: #DDAF94;">15 reputation</span> to upvote question or answer.</small>
             
             <br>
             <br>
@@ -107,7 +107,7 @@
         </div>
         <div class="modal-body">
           <p>
-            <small>You need <a href="" style="color: #DDAF94;">125 reputation</a> to downvote question or answer.</small>
+            <small>You need <span href="" style="color: #DDAF94;">125 reputation</span> to downvote question or answer.</small>
             
             <br>
             <br>
@@ -133,7 +133,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <small>You need atleast<a href="" style="color: #DDAF94;"> 15 reputation</a> to upvote question or answer.</small>
+          <small>You need at least<span href="" style="color: #DDAF94;"> 15 reputation</span> to upvote question or answer.</small>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
        
@@ -160,7 +160,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <small>You need atleast<a href="" style="color: #DDAF94;"> 125 reputation</a> to downvote question or answer.</small>
+          <small>You need at least<span href="" style="color: #DDAF94;"> 125 reputation</span> to downvote question or answer.</small>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
        
@@ -220,19 +220,19 @@
         </div>
         <div class="modal-body">
           <small>
-            <a href="whatsapp://send?text=nesaacademy.herokuapp.com{{ question.get_absolute_url }}" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on whatsapp"><i class="fa fa-whatsapp" style="font-size:24px;"></i></a>
+            <a href="whatsapp://send?text=nesaacademy.com{{ question.get_absolute_url }}" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on whatsapp"><i class="fa fa-whatsapp" style="font-size:24px;"></i></a>
              &nbsp; 
  
-             <a href="https://www.facebook.com/sharer/sharer.php?u=nesaacademy.herokuapp.com{{ question.get_absolute_url }}&t={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook"><i class="fa fa-facebook" style="font-size:24px;"></i> </a>
+             <a href="https://www.facebook.com/sharer/sharer.php?u=nesaacademy.com{{ question.get_absolute_url }}&t={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook"><i class="fa fa-facebook" style="font-size:24px;"></i> </a>
                
                &nbsp; 
-               <a href="https://twitter.com/share?url=nesaacademy.herokuapp.com{{ question.get_absolute_url }}&text={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" style="font-size:24px;"></i></a>
+               <a href="https://twitter.com/share?url=nesaacademy.com{{ question.get_absolute_url }}&text={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" style="font-size:24px;"></i></a>
                  
                &nbsp; 
-               <a href="https://www.linkedin.com/shareArticle?mini=true&url=nesaacademy.herokuapp.com{{ question.get_absolute_url }}&t={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Linkedin"><i class="fa fa-linkedin" style="font-size:24px;"></i></a>
+               <a href="https://www.linkedin.com/shareArticle?mini=true&url=nesaacademy.com{{ question.get_absolute_url }}&t={{ question.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Linkedin"><i class="fa fa-linkedin" style="font-size:24px;"></i></a>
  
                &nbsp; 
-             <a href="http://www.reddit.com/submit?url=nesaacademy.herokuapp.com{{ question.get_absolute_url }}" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Mail"><i class="fa fa-reddit" style="font-size:24px;"></i></a>
+             <a href="http://www.reddit.com/submit?url=nesaacademy.com{{ question.get_absolute_url }}" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Mail"><i class="fa fa-reddit" style="font-size:24px;"></i></a>
  
                &nbsp; 
                <a href="{% url 'questions:question_share' question.slug %}"><i class="fa fa-envelope" style="font-size:24px;"></i></a>
@@ -362,7 +362,7 @@
          </div>
          <div class="col-6 col-lg-6 mb-5">
           <strong>Asked by: </strong>{% if question.author %} <img src="{{ question.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}"> {% endif %}
-           <small>{% if question.author %}<a href="{% url 'profile' question.author.id question.author.username %}">{{ question.author.get_full_name }}</a>{% else %} <a href='https://rocky-atoll-47450.herokuapp.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ question.created }} </small>
+           <small>{% if question.author %}<a href="{% url 'profile' question.author.id question.author.username %}">{{ question.author.get_full_name }}</a>{% else %} <a href='/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ question.created }} </small>
            
            
        </div>
@@ -427,7 +427,7 @@
                {% if answer.author %} 
                
                <img src="{{ answer.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}"> {% endif %}
-                <small>{% if answer.author %}<a href="{% url 'profile' answer.author.id answer.author.username %}">{{ answer.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.herokuapp.com/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ answer.created|timesince }} ago </small>
+                <small>{% if answer.author %}<a href="{% url 'profile' answer.author.id answer.author.username %}">{{ answer.author.get_full_name }}</a>{% else %} <a href='/help/#anonymous-user'>Anonymous User</a> {% endif %}</small> <b>|</b> <small style="font-size: x-small;">{{ answer.created|timesince }} ago </small>
                 
 
                 {% if request.user.username == answer.author.username %}
@@ -456,7 +456,7 @@
             <button type="submit" class="btn btn-color-2" style="width: 100%">Add Answer</button>
           </form>
           <br>
-          <p>I don't know how to answer a question?<a href="https://nesaacademy.herokuapp.com/help/#how-to-answer-a-question"> Check here!</a></p>
+          <p>I don't know how to answer a question?<a href="/help/#how-to-answer-a-question"> Check here!</a></p>
         
           {% else %}
             <div class="alert alert-danger" role="alert">
@@ -513,7 +513,7 @@
     var csrfCookie =  getCookie('csrftoken')
 
     const getQuestionCounter = () => {
-    axios.get(`https://nesaacademy.herokuapp.com/questions/question-counter/${questionId}/`)
+    axios.get(`/questions/question-counter/${questionId}/`)
     .then(response => {
       var questionCounter = response.data.counter;
       document.querySelector('#question_counter').innerHTML = questionCounter
@@ -567,7 +567,7 @@
         document.querySelector('#modal-button3').click()
       } else {
 
-        axios.get(`https://nesaacademy.herokuapp.com/questions/question-vote-detail/${userId}/${questionId}`)
+        axios.get(`/questions/question-vote-detail/${userId}/${questionId}`)
         .then(response => {
     
         
@@ -575,7 +575,7 @@
 
             // Upvote question and increase question counter by one            
     
-            axios.post(`https://nesaacademy.herokuapp.com/questions/question-vote-create/`, {
+            axios.post(`/questions/question-vote-create/`, {
               author: userId,
               question: questionId,
               status: 'upvote',
@@ -586,7 +586,7 @@
             })
             .then(response => {
    
-              axios.put(`https://nesaacademy.herokuapp.com/questions/change-question-counter/${questionId}/`, {
+              axios.put(`/questions/change-question-counter/${questionId}/`, {
               counter: parseInt(document.querySelector('#question_counter').innerHTML) + 1
 
             }, {
@@ -598,7 +598,7 @@
         
               getQuestionCounter();
 
-              axios.post(`https://nesaacademy.herokuapp.com/questions/profile-plus/${authorId}/`, {
+              axios.post(`/questions/profile-plus/${authorId}/`, {
                   
                 }, {
                   headers: {
@@ -607,7 +607,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${authorId}/Your question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${authorId}/Your question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -643,7 +643,7 @@
           } else {
 
             // Then there is a downvote -- upvote question by two and change vote to upvote
-            axios.post(`https://nesaacademy.herokuapp.com/questions/question-change-status-upvote/${userId}/${questionId}/`, {
+            axios.post(`/questions/question-change-status-upvote/${userId}/${questionId}/`, {
             }, {
               headers: {
                 'X-CSRFTOKEN': csrfCookie,
@@ -651,7 +651,7 @@
             })
             .then(response => {
 
-              axios.put(`https://nesaacademy.herokuapp.com/questions/change-question-counter/${questionId}/`, {
+              axios.put(`/questions/change-question-counter/${questionId}/`, {
               counter: parseInt(document.querySelector('#question_counter').innerHTML) + 2
             }, {
               headers: {
@@ -662,7 +662,7 @@
            
               getQuestionCounter();
 
-              axios.post(`https://nesaacademy.herokuapp.com/questions/profile-plus/${authorId}/`, {
+              axios.post(`/questions/profile-plus/${authorId}/`, {
                   
                 }, {
                   headers: {
@@ -671,7 +671,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${authorId}/Your question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${authorId}/Your question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -726,7 +726,7 @@
         document.querySelector('#modal-button5').click()
       } else {
 
-        axios.get(`https://nesaacademy.herokuapp.com/questions/question-vote-detail/${userId}/${questionId}`)
+        axios.get(`/questions/question-vote-detail/${userId}/${questionId}`)
         .then(response => {
     
         
@@ -734,7 +734,7 @@
 
             // Upvote question and increase question counter by one            
     
-            axios.post(`https://nesaacademy.herokuapp.com/questions/question-vote-create/`, {
+            axios.post(`/questions/question-vote-create/`, {
               author: userId,
               question: questionId,
               status: 'downvote',
@@ -746,7 +746,7 @@
             .then(response => {
    
 
-              axios.put(`https://nesaacademy.herokuapp.com/questions/change-question-counter/${questionId}/`, {
+              axios.put(`/questions/change-question-counter/${questionId}/`, {
               counter: parseInt(document.querySelector('#question_counter').innerHTML) - 1
               }, {
                 headers: {
@@ -757,7 +757,7 @@
           
                 getQuestionCounter();
 
-                axios.post(`https://nesaacademy.herokuapp.com/questions/profile-minus/${authorId}/`, {
+                axios.post(`/questions/profile-minus/${authorId}/`, {
                   
                 }, {
                   headers: {
@@ -766,7 +766,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${authorId}/Your question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${authorId}/Your question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -801,7 +801,7 @@
           } else {
 
             // Then there is a downvote -- upvote question by two and change vote to upvote
-            axios.post(`https://nesaacademy.herokuapp.com/questions/question-change-status-downvote/${userId}/${questionId}/`, {
+            axios.post(`/questions/question-change-status-downvote/${userId}/${questionId}/`, {
             }, {
               headers: {
                 'X-CSRFTOKEN': csrfCookie,
@@ -810,7 +810,7 @@
             .then(response => {
       
 
-              axios.put(`https://nesaacademy.herokuapp.com/questions/change-question-counter/${questionId}/`, {
+              axios.put(`/questions/change-question-counter/${questionId}/`, {
               counter: parseInt(document.querySelector('#question_counter').innerHTML) - 2
             }, {
               headers: {
@@ -821,7 +821,7 @@
            
               getQuestionCounter();
 
-              axios.post(`https://nesaacademy.herokuapp.com/questions/profile-minus/${authorId}/`, {
+              axios.post(`/questions/profile-minus/${authorId}/`, {
                   
                 }, {
                   headers: {
@@ -830,7 +830,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${authorId}/Your question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${authorId}/Your question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -875,7 +875,7 @@
           let answer_id = element.dataset.answer
           let answer_author_id = element.dataset.author
 
-          axios.put(`https://nesaacademy.herokuapp.com/questions/change-answer-accepted/${answer_id}/`, {
+          axios.put(`/questions/change-answer-accepted/${answer_id}/`, {
               accepted: true
             }, {
               headers: {
@@ -884,7 +884,7 @@
             })
             .then(response => {
 
-              axios.post(`https://nesaacademy.herokuapp.com/questions/profile-plus/${answer_author_id}/`, {
+              axios.post(`/questions/profile-plus/${answer_author_id}/`, {
                   
                 }, {
                   headers: {
@@ -893,7 +893,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was accepted by the author of the question and you just earned 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was accepted by the author of the question and you just earned 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -934,7 +934,7 @@
 
         let answer_id = element.dataset.answer
 
-        axios.get(`https://nesaacademy.herokuapp.com/questions/answer-counter/${answer_id}/`)
+        axios.get(`/questions/answer-counter/${answer_id}/`)
           .then(response => {
             let counter = response.data.counter;
                element.innerHTML = counter
@@ -958,13 +958,13 @@
         document.querySelector('#modal-button3').click()
       } else {
 
-        axios.get(`https://nesaacademy.herokuapp.com/questions/answer-vote-list/${userId}/${element.dataset.answer}/`)
+        axios.get(`/questions/answer-vote-list/${userId}/${element.dataset.answer}/`)
           .then(response => {
        
    
             if (response.data.length === 0) {
 
-              axios.post(`https://nesaacademy.herokuapp.com/questions/answer-vote-create/`, {
+              axios.post(`/questions/answer-vote-create/`, {
               author: userId,
               answer: element.dataset.answer,
               status: 'upvote',
@@ -974,11 +974,11 @@
               }
             }).then(response => {
 
-              axios.get(`https://nesaacademy.herokuapp.com/questions/answer-counter/${element.dataset.answer}/`)
+              axios.get(`/questions/answer-counter/${element.dataset.answer}/`)
               .then(response => {
                 let count = response.data.counter;
 
-                axios.put(`https://nesaacademy.herokuapp.com/questions/change-answer-counter/${element.dataset.answer}/`, {
+                axios.put(`/questions/change-answer-counter/${element.dataset.answer}/`, {
                 counter: count + 1
                 }, {
                   headers: {
@@ -989,7 +989,7 @@
             
                   getAnswerCounter();
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/profile-plus/${answer_author_id}/`, {
+                  axios.post(`/questions/profile-plus/${answer_author_id}/`, {
                   
                 }, {
                   headers: {
@@ -998,7 +998,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -1039,7 +1039,7 @@
             } else {
 
                // Then there is a downvote -- upvote answer by two and change vote to upvote
-            axios.post(`https://nesaacademy.herokuapp.com/questions/answer-change-status-upvote/${userId}/${element.dataset.answer}/`, {
+            axios.post(`/questions/answer-change-status-upvote/${userId}/${element.dataset.answer}/`, {
             }, {
               headers: {
                 'X-CSRFTOKEN': csrfCookie,
@@ -1048,11 +1048,11 @@
             .then(response => {
       
 
-              axios.get(`https://nesaacademy.herokuapp.com/questions/answer-counter/${element.dataset.answer}/`)
+              axios.get(`/questions/answer-counter/${element.dataset.answer}/`)
               .then(response => {
                 let count = response.data.counter;
 
-                axios.put(`https://nesaacademy.herokuapp.com/questions/change-answer-counter/${element.dataset.answer}/`, {
+                axios.put(`/questions/change-answer-counter/${element.dataset.answer}/`, {
                 counter: count + 2
                 }, {
                   headers: {
@@ -1063,7 +1063,7 @@
             
                   getAnswerCounter();
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/profile-plus/${answer_author_id}/`, {
+                  axios.post(`/questions/profile-plus/${answer_author_id}/`, {
                   
                 }, {
                   headers: {
@@ -1072,7 +1072,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was upvoted and you just earned 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -1131,13 +1131,13 @@
         document.querySelector('#modal-button5').click()
       } else {
 
-        axios.get(`https://nesaacademy.herokuapp.com/questions/answer-vote-list/${userId}/${element.dataset.answer}/`)
+        axios.get(`/questions/answer-vote-list/${userId}/${element.dataset.answer}/`)
           .then(response => {
        
    
             if (response.data.length === 0) {
 
-              axios.post(`https://nesaacademy.herokuapp.com/questions/answer-vote-create/`, {
+              axios.post(`/questions/answer-vote-create/`, {
               author: userId,
               answer: element.dataset.answer,
               status: 'downvote',
@@ -1147,11 +1147,11 @@
               }
             }).then(response => {
 
-              axios.get(`https://nesaacademy.herokuapp.com/questions/answer-counter/${element.dataset.answer}/`)
+              axios.get(`/questions/answer-counter/${element.dataset.answer}/`)
               .then(response => {
                 let count = response.data.counter;
 
-                axios.put(`https://nesaacademy.herokuapp.com/change-answer-counter/${element.dataset.answer}/`, {
+                axios.put(`/change-answer-counter/${element.dataset.answer}/`, {
                 counter: count - 1
                 }, {
                   headers: {
@@ -1162,7 +1162,7 @@
             
                   getAnswerCounter();
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/profile-minus/${answer_author_id}/`, {
+                  axios.post(`/questions/profile-minus/${answer_author_id}/`, {
                   
                 }, {
                   headers: {
@@ -1171,7 +1171,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -1212,7 +1212,7 @@
             } else {
 
                // Then there is a downvote -- upvote answer by two and change vote to upvote
-            axios.post(`https://nesaacademy.herokuapp.com/questions/answer-change-status-downvote/${userId}/${element.dataset.answer}/`, {
+            axios.post(`/questions/answer-change-status-downvote/${userId}/${element.dataset.answer}/`, {
             }, {
               headers: {
                 'X-CSRFTOKEN': csrfCookie,
@@ -1221,11 +1221,11 @@
             .then(response => {
       
 
-              axios.get(`https://nesaacademy.herokuapp.com/questions/answer-counter/${element.dataset.answer}/`)
+              axios.get(`/questions/answer-counter/${element.dataset.answer}/`)
               .then(response => {
                 let count = response.data.counter;
 
-                axios.put(`https://nesaacademy.herokuapp.com/questions/change-answer-counter/${element.dataset.answer}/`, {
+                axios.put(`/questions/change-answer-counter/${element.dataset.answer}/`, {
                 counter: count - 2
                 }, {
                   headers: {
@@ -1236,7 +1236,7 @@
             
                   getAnswerCounter();
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/profile-minus/${answer_author_id}/`, {
+                  axios.post(`/questions/profile-minus/${answer_author_id}/`, {
                   
                 }, {
                   headers: {
@@ -1245,7 +1245,7 @@
                 })
                 .then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
+                  axios.post(`/questions/notification/${answer_author_id}/Your answer to question titled "${questionTitle}" was downvoted and you lost 3 points of reputation/`, {
                   
                 }, {
                   headers: {
@@ -1298,7 +1298,7 @@
     var follow = document.querySelector('#follow');
 
     if (userId) {
-      axios.get(`https://nesaacademy.herokuapp.com/follow/my_question_follow/${userId}/${questionId}/`)
+      axios.get(`/follow/my_question_follow/${userId}/${questionId}/`)
     .then(response => {
  
       if (response.data.length === 0) {
@@ -1307,7 +1307,7 @@
         follow.addEventListener('click', (e) => {
           e.preventDefault()
 
-        axios.post(`https://nesaacademy.herokuapp.com/follow/new_question_follow/`, {
+        axios.post(`/follow/new_question_follow/`, {
                 user: userId,
                 question: questionId,
                 }, {
@@ -1331,7 +1331,7 @@
         follow.addEventListener('click', (e) => {
           e.preventDefault()
 
-          axios.post(`https://nesaacademy.herokuapp.com/follow/delete_question_follow/${userId}/${questionId}/`, {
+          axios.post(`/follow/delete_question_follow/${userId}/${questionId}/`, {
         
                 }, {
                   headers: {

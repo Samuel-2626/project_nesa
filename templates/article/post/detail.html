@@ -75,19 +75,19 @@
       </div>
       <div class="modal-body">
         <small>
-          <a href="whatsapp://send?text=nesaacademy.herokuapp.com{{ post.get_absolute_url }}" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on whatsapp"><i class="fa fa-whatsapp" style="font-size:24px;"></i></a>
+          <a href="whatsapp://send?text=nesaacademy.com{{ post.get_absolute_url }}" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on whatsapp"><i class="fa fa-whatsapp" style="font-size:24px;"></i></a>
            &nbsp; 
  
-           <a href="https://www.facebook.com/sharer/sharer.php?u=nesaacademy.herokuapp.com{{ post.get_absolute_url }}&t={{ post.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook"><i class="fa fa-facebook" style="font-size:24px;"></i> </a>
+           <a href="https://www.facebook.com/sharer/sharer.php?u=nesaacademy.com{{ post.get_absolute_url }}&t={{ post.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook"><i class="fa fa-facebook" style="font-size:24px;"></i> </a>
              
              &nbsp; 
-             <a href="https://twitter.com/share?url=nesaacademy.herokuapp.com{{ post.get_absolute_url }}&text={{ post.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" style="font-size:24px;"></i></a>
+             <a href="https://twitter.com/share?url=nesaacademy.com{{ post.get_absolute_url }}&text={{ post.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" style="font-size:24px;"></i></a>
                
              &nbsp; 
-             <a href="https://www.linkedin.com/shareArticle?mini=true&url=nesaacademy.herokuapp.com{{ post.get_absolute_url }}&t={{ post.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Linkedin"><i class="fa fa-linkedin" style="font-size:24px;"></i></a>
+             <a href="https://www.linkedin.com/shareArticle?mini=true&url=nesaacademy.com{{ post.get_absolute_url }}&t={{ post.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Linkedin"><i class="fa fa-linkedin" style="font-size:24px;"></i></a>
  
              &nbsp; 
-             <a href="http://www.reddit.com/submit?url=nesaacademy.herokuapp.com{{ post.get_absolute_url }}" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Mail"><i class="fa fa-reddit" style="font-size:24px;"></i></a>
+             <a href="http://www.reddit.com/submit?url=nesaacademy.com{{ post.get_absolute_url }}" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Mail"><i class="fa fa-reddit" style="font-size:24px;"></i></a>
  
                &nbsp; 
                <a href="/articles/{{ post.id }}/share/"><i class="fa fa-envelope" style="font-size:24px;"></i></a>
@@ -154,7 +154,7 @@
         
         <br>
        
-                  <p>{% if post.author %}  <img src="{{ post.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}"> <a href="{% url 'profile' post.author.id post.author.username %}"> {{ post.author.get_full_name }}</a>{% else %} <a href='https://nesaacademy.herokuapp.com/help/#anonymous-user'>Anonymous User</a> {% endif %}
+                  <p>{% if post.author %}  <img src="{{ post.author.profile.get_photo_url }}" class="img-config" alt="{{ user.get_full_name }}"> <a href="{% url 'profile' post.author.id post.author.username %}"> {{ post.author.get_full_name }}</a>{% else %} <a href='/help/#anonymous-user'>Anonymous User</a> {% endif %}
                   <br>
                   
                     {{ post.created|date }} &nbsp; <b>|</b> &nbsp; <i class="material-icons green-color" style="position: relative; top: 5px; right: 5px;">visibility</i> {% with post.views as total_views %}
@@ -297,7 +297,7 @@ window.onload = (gg) => {
 
         if (user_id !== 'None') {
  
-          axios.get(`https://nesaacademy.herokuapp.com/articles/get_user_status/${user_id}/${post_id}/`, {
+          axios.get(`/articles/get_user_status/${user_id}/${post_id}/`, {
                   
                 }, {
                   headers: {
@@ -308,7 +308,7 @@ window.onload = (gg) => {
 
                   if (response.data.length === 0) {   
 
-                  axios.post(`https://nesaacademy.herokuapp.com/articles/like_post/${user_id}/${post_id}/`, {
+                  axios.post(`/articles/like_post/${user_id}/${post_id}/`, {
                   }, {
                     headers: {
                       'X-CSRFTOKEN': csrfCookie,
@@ -316,7 +316,7 @@ window.onload = (gg) => {
                   })
                   .then(response => {
 
-                    axios.post(`https://nesaacademy.herokuapp.com/articles/increase_article/${post_id}/`, {
+                    axios.post(`/articles/increase_article/${post_id}/`, {
          
                   }, {
                     headers: {
@@ -335,7 +335,7 @@ window.onload = (gg) => {
           });
               } else if ((response.data[0].status === 'dislike')) {
 
-                axios.post(`https://nesaacademy.herokuapp.com/articles/change-dislike-to-like/${user_id}/${post_id}/`, {
+                axios.post(`/articles/change-dislike-to-like/${user_id}/${post_id}/`, {
               
               }, {
                 headers: {
@@ -344,7 +344,7 @@ window.onload = (gg) => {
               }).then(response => {
                 
 
-                axios.post(`https://nesaacademy.herokuapp.com/articles/decrease_dislike_article/${post_id}/`, {
+                axios.post(`/articles/decrease_dislike_article/${post_id}/`, {
               
                 }, {
                   headers: {
@@ -352,7 +352,7 @@ window.onload = (gg) => {
                   }
                 }).then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/articles/increase_article/${post_id}/`, {
+                  axios.post(`/articles/increase_article/${post_id}/`, {
                     
                   }, {
                     headers: {
@@ -394,7 +394,7 @@ window.onload = (gg) => {
         e.preventDefault()
 
         if (user_id !== 'None') {
-          axios.get(`https://nesaacademy.herokuapp.com/articles/get_user_status/${user_id}/${post_id}/`, {
+          axios.get(`/articles/get_user_status/${user_id}/${post_id}/`, {
                   
                 }, {
                   headers: {
@@ -405,7 +405,7 @@ window.onload = (gg) => {
 
                   if (response.data.length === 0) {   
 
-                  axios.post(`https://nesaacademy.herokuapp.com/articles/dislike_post/${user_id}/${post_id}/`, {
+                  axios.post(`/articles/dislike_post/${user_id}/${post_id}/`, {
                   }, {
                     headers: {
                       'X-CSRFTOKEN': csrfCookie,
@@ -413,7 +413,7 @@ window.onload = (gg) => {
                   })
                   .then(response => {
 
-                    axios.post(`https://nesaacademy.herokuapp.com/articles/increase_dislike_article/${post_id}/`, {
+                    axios.post(`/articles/increase_dislike_article/${post_id}/`, {
          
                   }, {
                     headers: {
@@ -432,7 +432,7 @@ window.onload = (gg) => {
           });
               } else if ((response.data[0].status === 'like')) {
 
-                axios.post(`https://nesaacademy.herokuapp.com/articles/change-like-to-dislike/${user_id}/${post_id}/`, {
+                axios.post(`/articles/change-like-to-dislike/${user_id}/${post_id}/`, {
               
               }, {
                 headers: {
@@ -441,7 +441,7 @@ window.onload = (gg) => {
               }).then(response => {
                 
                
-                axios.post(`https://nesaacademy.herokuapp.com/articles/decrease_article/${post_id}/`, {
+                axios.post(`/articles/decrease_article/${post_id}/`, {
               
                 }, {
                   headers: {
@@ -449,7 +449,7 @@ window.onload = (gg) => {
                   }
                 }).then(response => {
 
-                  axios.post(`https://nesaacademy.herokuapp.com/articles/increase_dislike_article/${post_id}/`, {
+                  axios.post(`/articles/increase_dislike_article/${post_id}/`, {
                     
                   }, {
                     headers: {

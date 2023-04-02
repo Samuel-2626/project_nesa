@@ -208,7 +208,7 @@ def post_article(request):
 
     if request.user.profile.reputation < 100:
 
-        messages.success(request, '<b>Access Denied:</b> You need atleast 100 reputation to post an article <a href="https://nesaacademy.herokuapp.com/help/#posting-article" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+        messages.success(request, '<b>Access Denied:</b> You need atleast 100 reputation to post an article <a href="/help/#posting-article" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
 
         return redirect('articles:post_list')
 
@@ -282,7 +282,7 @@ def edit_comment(request, id, slug):
     if comment.author != request.user:
         messages.success(
             request, '<strong>Access Denied:</strong> You are not the author of this comment ', extra_tags='safe')
-        return redirect(f'https://nesaacademy.herokuapp.com{post.get_absolute_url()}')
+        return redirect(f'https://nesaacademy.com{post.get_absolute_url()}')
 
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST, instance=comment)
@@ -293,7 +293,7 @@ def edit_comment(request, id, slug):
             comment_form.save_m2m()
 
             messages.success(request, 'comment edited successfully!')
-            return redirect(f'https://nesaacademy.herokuapp.com{post.get_absolute_url()}')
+            return redirect(f'https://nesaacademy.com{post.get_absolute_url()}')
 
     else:
         comment_form = CommentForm(instance=comment)
@@ -335,7 +335,7 @@ def delete_comment(request, id, slug):
         comment.delete()
 
         messages.success(request, 'comment deleted successfully!')
-        return redirect(f'https://nesaacademy.herokuapp.com/{post.get_absolute_url()}')
+        return redirect(f'https://nesaacademy.com/{post.get_absolute_url()}')
 
     else:
         comment_form = CommentForm()

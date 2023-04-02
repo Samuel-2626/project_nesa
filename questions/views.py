@@ -93,7 +93,7 @@ def ask_question(request):
                           request.user.email])
 
                 messages.success(
-                    request, 'Your question as been published, please share your question with others. <a href="https://nesaacademy.herokuapp.com/help/#ask-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+                    request, 'Your question as been published, please share your question with others. <a href="/help/#ask-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
 
                 return redirect('questions:question-list')
 
@@ -135,7 +135,7 @@ def ask_question(request):
                       f'Hi {request.user.first_name}, \n\nYou just earned an additional two points for your reputation.\n\nCheers.', f'{settings.DEFAULT_FROM_EMAIL}', [request.user.email])
 
             messages.success(
-                request, 'Your question as been submitted for review. <a href="https://nesaacademy.herokuapp.com/help/#ask-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+                request, 'Your question as been submitted for review. <a href="/help/#ask-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
 
             return redirect('questions:question-list')
 
@@ -442,7 +442,7 @@ def question_detail(request, slug):
                 return redirect('questions:question-detail', slug=slug)
 
     except:
-        messages.success(request, '<strong>Access Denied:</strong> You have already answered this question  <a href="https://nesaacademy.herokuapp.com/help/#how-to-answer-a-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+        messages.success(request, '<strong>Access Denied:</strong> You have already answered this question  <a href="/help/#how-to-answer-a-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
         return redirect('questions:question-detail', slug=slug)
 
     else:
@@ -489,7 +489,7 @@ def edit_question(request, slug):
         return redirect('questions:question-detail', slug=slug)
 
     if request.user.profile.reputation < 49:
-        messages.success(request, '<strong>Access Denied:</strong> Only people with over 50 reputation can edit a question <a href="https://nesaacademy.herokuapp.com/help/#editing-a-question-or-answer" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+        messages.success(request, '<strong>Access Denied:</strong> Only people with over 50 reputation can edit a question <a href="/help/#editing-a-question-or-answer" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
         return redirect('questions:question-detail', slug=slug)
 
     if request.method == 'POST':
@@ -553,11 +553,11 @@ def delete_question(request, slug):
         return redirect('questions:question-detail', slug=slug)
 
     if total_answers >= 1:
-        messages.success(request, '<strong>Access Denied:</strong> You can\'t delete a question that has an approved answer :) <a href="https://nesaacademy.herokuapp.com/help/#deleting-a-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+        messages.success(request, '<strong>Access Denied:</strong> You can\'t delete a question that has an approved answer :) <a href="/help/#deleting-a-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
         return redirect('questions:question-detail', slug=slug)
 
     if request.user.profile.reputation < 99:
-        messages.success(request, '<strong>Access Denied:</strong> Only people with over 100 reputation can delete a question <a href="https://nesaacademy.herokuapp.com/help/#deleting-a-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+        messages.success(request, '<strong>Access Denied:</strong> Only people with over 100 reputation can delete a question <a href="/help/#deleting-a-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
         return redirect('questions:question-detail', slug=slug)
 
     if request.method == 'POST':
@@ -610,7 +610,7 @@ def edit_answer(request, id, slug):
     slug = question.slug
 
     if request.user.profile.reputation < 49:
-        messages.success(request, '<strong>Access Denied:</strong> Only people with over 50 reputation can edit an answer <a href="https://nesaacademy.herokuapp.com/help/#editing-a-question-or-answer" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+        messages.success(request, '<strong>Access Denied:</strong> Only people with over 50 reputation can edit an answer <a href="/help/#editing-a-question-or-answer" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
         return redirect('questions:question-detail', slug=slug)
 
     if answer.author != request.user:
@@ -684,7 +684,7 @@ def delete_answer(request, id, slug):
         return redirect('questions:question-detail', slug=slug)
 
     if request.user.profile.reputation < 99:
-        messages.success(request, '<strong>Access Denied:</strong> Only people with over 500 reputation can delete a question <a href="https://nesaacademy.herokuapp.com/help/#deleting-a-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
+        messages.success(request, '<strong>Access Denied:</strong> Only people with over 500 reputation can delete a question <a href="/help/#deleting-a-question" style="color:#DDAF94;">Learn more</a>', extra_tags='safe')
         return redirect('questions:question-detail', slug=slug)
 
     if request.method == 'POST':
