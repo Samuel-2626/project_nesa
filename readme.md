@@ -10,7 +10,7 @@ A question and answer platform, similar with [Stack Overflow](https://stackoverf
 4. BootStrap5
 5. Auth0
 
-This site is hosted on Heroku: which you can find [here](https://nesaacademy.herokuapp.com/). Here are the basic features.
+Visit [https://nesaacademy.com/](https://nesaacademy.com/) for the live site. Here are the basic features.
 
 -------
 
@@ -41,7 +41,7 @@ You can also edit or delete question you posted.
 ![Question 3](https://imgur.com/vXltq4o.png)
 ![Question 4](https://imgur.com/azCj53i.png)
 
-> However, since this web app mirrors Stack Overflow, you must have certain level of reputation before you can edit, delete question and perform other actions. Checkout the [help center](https://nesaacademy.herokuapp.com/help/) to learn more.
+> However, since this web app mirrors Stack Overflow, you must therefore have certain level of reputation before you can edit/delete question and perform other actions. Checkout the [help center](https://nesaacademy.com/help/) to learn more.
 
 ### Asking a Question
 
@@ -55,13 +55,13 @@ Things start getting interesting when you view a single question, as you can see
 
 ![Question 6](https://imgur.com/WKaDgAo.png)
 
-Futhermore, you can answer a particular question just once, as well as `upvote`, `downvote`, `edit`, and `delete` answer. You can also `accept` a particular answer if you deem it to be the most suitable for your particular question: a `green check mark` will be visible on accepted answers.
+Furthermore, you can answer a particular question just once, as well as `upvote`, `downvote`, `edit`, and `delete` the answer. You can also `accept` a particular answer if you deem it to be the most suitable for your particular question: a `green check mark` will be visible on accepted answers.
 
 ![Question 7](https://imgur.com/cJpzRez.png)
 
-### Search Question 
+### Search Question
 
-You can also search for a particular question. Full-text search was implemented here.
+You can also search for a particular question.
 
 ![Question 8](https://imgur.com/v0VqJyo.png)
 
