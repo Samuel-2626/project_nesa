@@ -8,7 +8,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 
 # Django modules
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
@@ -371,10 +371,14 @@ def article_search(request):
 
         query_articles = request.GET.get('query_art')
 
-        search_vector = SearchVector('title', 'body')
-        search_query = SearchQuery(query_articles)
-        results = Article.objects.all().annotate(search=search_vector, rank=SearchRank(
-            search_vector, search_query)).filter(search=search_query).order_by('-rank')
+        # search_vector = SearchVector('title', 'body')
+        # search_query = SearchQuery(query_articles)
+        # results = Article.objects.all().annotate(search=search_vector, rank=SearchRank(
+        #     search_vector, search_query)).filter(search=search_query).order_by('-rank')
+
+        results = Article.published.filter(
+            Q(title__icontains=query_articles) | Q(body__icontains=query_articles)
+        )
 
     return render(request, 'article/post/search.html', {
 

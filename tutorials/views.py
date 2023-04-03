@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.contrib import messages
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.db.models import Q
 
 # Django apps
 from questions.models import Question, Answer
@@ -302,10 +303,14 @@ def tutorial_search(request):
   
     query_tut = request.GET.get('query_tutorial')
 
-    search_vector = SearchVector('question', 'answer')
-    search_query = SearchQuery(query_tut)
-    results = Tutorial.objects.all().annotate(search=search_vector, rank=SearchRank(search_vector, search_query)).filter(search=search_query).order_by('-rank')
+    # search_vector = SearchVector('question', 'answer')
+    # search_query = SearchQuery(query_tut)
+    # results = Tutorial.objects.all().annotate(search=search_vector, rank=SearchRank(search_vector, search_query)).filter(search=search_query).order_by('-rank')
   
+    results = Tutorial.objects.filter(
+            Q(question__icontains=query_tut) | Q(answer__icontains=query_tut)
+        )
+
   return render(request, 'tutorials/search.html', {
 
     'query_tut': query_tut,

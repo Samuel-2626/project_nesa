@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -170,10 +170,14 @@ def question_search(request):
 
         query = request.GET.get('query_question')
 
-        search_vector = SearchVector('title', 'body')
-        search_query = SearchQuery(query)
-        results = Question.published.annotate(search=search_vector, rank=SearchRank(
-            search_vector, search_query)).filter(search=search_query).order_by('-rank')
+        # search_vector = SearchVector('title', 'body')
+        # search_query = SearchQuery(query)
+        # results = Question.published.annotate(search=search_vector, rank=SearchRank(
+        #     search_vector, search_query)).filter(search=search_query).order_by('-rank')
+
+        results = Question.published.filter(
+            Q(title__icontains=query) | Q(body__icontains=query)
+        )
 
     return render(request, 'questions/search.html', {
 
