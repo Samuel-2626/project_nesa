@@ -12,6 +12,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import User
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.conf import settings
+from django.db.models import Q
 
 # Django apps
 
@@ -130,11 +131,15 @@ def Users(request):
 
     if user_query:
 
-        search_vector = SearchVector('first_name', 'last_name')
+        # search_vector = SearchVector('first_name', 'last_name')
 
-        search_query = SearchQuery(user_query)
-        user_list = User.objects.filter(is_active=True).annotate(search=search_vector, rank=SearchRank(
-            search_vector, search_query)).filter(search=search_query).order_by('-rank')
+        # search_query = SearchQuery(user_query)
+        # user_list = User.objects.filter(is_active=True).annotate(search=search_vector, rank=SearchRank(
+        #     search_vector, search_query)).filter(search=search_query).order_by('-rank')
+
+        user_list = User.objects.filter(is_active=True).filter(
+            Q(first_name__icontains=user_query) | Q(last_name__icontains=user_query)
+        )
 
     page = request.GET.get('page', 1)
     paginator = Paginator(user_list, 200)
