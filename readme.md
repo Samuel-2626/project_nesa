@@ -2,7 +2,7 @@
 
 ![Homepage](https://imgur.com/r7UZJb6.png)
 
-A question and answer platform, similar with [Stack Overflow](https://stackoverflow.com/), but for economists: built with Python and JavaScript. The Tech Stack is as follows:
+A question and answer platform, similar to [Stack Overflow](https://stackoverflow.com/), but for economists: built with Python and JavaScript. The Tech Stack is as follows:
 
 1. Django
 2. Django REST framework
